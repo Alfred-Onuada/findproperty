@@ -1,0 +1,5 @@
+# node_modules is too big to be under version control
+node_modules/
+
+# .env will contain very useful information and as such is ignored also
+.env
