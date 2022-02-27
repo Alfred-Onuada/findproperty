@@ -1,0 +1,29 @@
+<header ngStickyNav stickyClass="sticky-box-shadow">
+  <div class="container">
+    <div class="row navbar-row">
+      <div class="logo-container col-md-4">
+        <img class="logo" [src]="logoLocation" alt="">
+      </div>
+      <div class="col-md-8 nav-items-container">
+        <button mat-button class="nav-btn">
+          <a [routerLink]="">Home</a>
+        </button>
+        <button mat-button class="nav-btn">
+          <a [routerLink]="">Find a Property</a>
+        </button>
+        <button mat-button class="nav-btn">
+          <a [routerLink]="">Top Offers</a>
+        </button>
+        <button mat-button class="nav-btn">
+          <a [routerLink]="">Contact Us</a>
+        </button>
+        <button mat-button class="nav-btn">
+          <a [routerLink]="">About Us</a>
+        </button>
+        <button mat-flat-button class="nav-btn login-btn">
+          <a [routerLink]="">Login</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,43 @@
+<div class="property-card">
+  <div class="card-img-and-price">
+    <img class="property-card-img" [src]="propertyInfo.image[0]" alt="">
+    <div class="property-price-container">
+      <div class="listing-type">
+        <h4>For {{propertyInfo.listingType}}</h4>
+      </div>
+      <div class="property-price">
+        <h4>{{propertyInfo.price | currency:"NGN":"symbol"}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="property-card-content">
+    <h4 class="property-card-title">{{propertyInfo.title}}</h4>
+    <h4 class="property-description">{{propertyInfo.description}}</h4>
+    <div class="property-location-container">
+      <fa-icon class="property-icon" [icon]="locationIcon"></fa-icon>
+      <h4 class="property-location">{{propertyInfo.location}}</h4>
+    </div>
+    <hr>
+    <mat-grid-list class="property-highlights" cols="4" rowHeight="fit" gutterSize="5px">
+      <mat-grid-tile class="property-highlights-bottom">
+        <fa-icon class="property-icon" [icon]="bedIcon"></fa-icon>
+        <h4 class="property-highlights-item">{{propertyInfo.highlights.bedsCount}} Bed(s)</h4>
+        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      </mat-grid-tile>
+      <mat-grid-tile class="property-highlights-bottom">
+        <fa-icon class="property-icon" [icon]="bathIcon"></fa-icon>
+        <h4 class="property-highlights-item">{{propertyInfo.highlights.bathsCount}} Bath(s)</h4>
+        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      </mat-grid-tile>
+      <mat-grid-tile class="property-highlights-bottom">
+        <fa-icon class="property-icon" [icon]="roomIcon"></fa-icon>
+        <h4 class="property-highlights-item">{{propertyInfo.highlights.roomsCount}} Room(s)</h4>
+        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      </mat-grid-tile>
+      <mat-grid-tile class="property-highlights-bottom">
+        <fa-icon class="property-icon" [icon]="landIcon"></fa-icon>
+        <h4 class="property-highlights-item">{{propertyInfo.highlights.landArea}} sq</h4>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

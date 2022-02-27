@@ -1,0 +1,71 @@
+.carousel-content{
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.customer-img{
+  position: relative;
+  margin-right: 25px;
+}
+.customer-img > img{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+.quotes{
+  position: absolute;
+  bottom: 30px;
+  right: 0px;
+  color: #FFFF;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 25px;
+  background-color: #2D9DB2;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.customer-review{
+  text-align: left;
+  width: 500px;
+}
+.review-text{
+  color: #FFFF;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+}
+.customer-name{
+  margin: 10px 0px 0px 0px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #F8F8F8;
+}
+.customer-organization{
+  color: #FA983A;
+  font-weight: normal;
+  font-size: 13px;
+  margin: 0px;
+}
+.slide-controls{
+  display: flex;
+  margin-top: 15px;
+  place-items: center;
+}
+.slide-dot{
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #D3DEE8;
+  margin-right: 6px;
+}
+.active-slide{
+  border: 2px solid #D3DEE8;
+  background-color: #2D9DB3;
+  height: 14px;
+  width: 14px;
+}

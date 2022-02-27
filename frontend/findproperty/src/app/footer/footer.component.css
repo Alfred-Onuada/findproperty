@@ -1,0 +1,128 @@
+footer{
+  background-color: #14505B;
+}
+.newsletter-container{
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+.go-to-top{
+  height: 50px;
+  width: 50px;
+  display: flex;
+  border-radius: 50%;
+  place-content: center;
+  place-items: center;
+  border: 3px solid white;
+  margin-bottom: -25px;
+  background-color: #2D9DB2;
+  z-index: 1;
+}
+.go-to-icon{
+  color: #FFFF;
+  height: 20px;
+  width: 20px;
+  border-left: 3px solid #FFFF;
+  border-top: 3px solid #FFFF;
+  border-radius: 0px;
+  transform: rotateZ(45deg);
+  margin-top: 8px;
+}
+.social-icons-div{
+  display: flex;
+  place-content: flex-end;
+}
+.social-icons{
+  width: 220px;
+  height: 100px;
+}
+.social-icon-box{
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 7px;
+  background: #FFFF;
+}
+.social-icon-svg{
+  color: #2D9DB2;
+  font-size: 17px;
+}
+.newsletter{
+  width: 80vw;
+  height: 200px;
+  margin-bottom: -90px;
+  background-color: #2D9DB2;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.subscribe-input{
+  height: 50px;
+  width: 90%;
+  border: 0px;
+  border-radius: 2px;
+  padding-left: 20px;
+  font-size: 13px;
+}
+.subscribe-button{
+  position: absolute;
+  margin-left: -109px;
+  margin-top: 8px;
+  border: 0px;
+  border-radius: 3px;
+  height: 35px;
+  color: #FFFF;
+  padding: 0px 20px;
+  background: #2d9db2;
+}
+.footer-padding-large{
+  padding-top:  170px;
+}
+.footer-headers{
+  color: #FFFF;
+  font-weight: 400;
+  font-size: 18px;
+}
+.footer-text{
+  color: #D5E0EA;
+  font-weight: 300;
+  font-size: 13px;
+}
+.footer-business-hours{
+  color: #D5E0EA;
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+.social-media-posts{
+  height: 180px;
+  width: 100%;
+}
+.social-media-img{
+  height: 85px;
+  width: 167px;
+  object-fit: fill;
+}
+.quick-access-container{
+  padding: 0px;
+  margin: 0px;
+}
+.quick-access-link{
+  height: 20px;
+  margin-bottom: 10px;
+}
+.quick-access-link > a{
+  color: inherit;
+  text-decoration: none;
+}
+hr{
+  margin-top: 50px;
+  color: #758594;
+}
+.copyright{
+  display: flex;
+  place-content: center;
+  width: 100%;
+}
+.copyright > h4{
+  margin-left: 10px;
+}

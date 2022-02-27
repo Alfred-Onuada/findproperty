@@ -1,0 +1,19 @@
+<div *ngFor="let slide of slides, let i = index">
+  <div class="carousel-content" *ngIf="i === currentSlide"
+    @carouselAnimation>
+    <div class="customer-img">
+      <img [src]="slide.image" alt="">
+      <fa-icon class="quotes" [icon]="quotesIcon"></fa-icon>
+    </div>
+    <div class="customer-review">
+      <p class="review-text">{{slide.review}}</p>
+      <h3 class="customer-name">{{slide.customerName}}</h3>
+      <h3 class="customer-organization">{{slide.customerOrganization}}</h3>
+      <div class="slide-controls">
+        <div class="slide-dot" (click)="prevSlide()"></div>
+        <div class="slide-dot active-slide"></div>
+        <div class="slide-dot" (click)="nextSlide()"></div>
+      </div>
+    </div>
+  </div>
+</div>

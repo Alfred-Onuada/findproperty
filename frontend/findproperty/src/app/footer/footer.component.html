@@ -1,0 +1,65 @@
+<div class="newsletter-container">
+  <div (click)="scrollTop()" class="go-to-top">
+    <div class="go-to-icon"></div>
+  </div>
+  <div class="newsletter">
+    <div class="row" style="width: 90%;">
+      <!-- this div is for the newsletter it's appearance will be based on if the user is registered or not -->
+      <div class="col-md-8" *ngIf="isRegistered == false">
+        <h4 class="footer-headers">Subscribe To Our Newsletter</h4>
+        <form method="post" (submit)="subscribeToEmail()">
+          <input class="subscribe-input" type="email" placeholder="example@abc.com">
+          <button class="subscribe-button" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="col-md-4 social-icons-div">
+        <mat-grid-list rowHeight="fit" [cols]="socialIconsCols"
+          gutterSize="5px" class="social-icons">
+          <mat-grid-tile *ngFor="let socialIcon of socialIcons"
+            class="social-icon-box">
+            <a [routerLink]="socialIcon.target" target="_blank">
+              <fa-icon class="social-icon-svg" [icon]="socialIcon.name"></fa-icon>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-padding-large">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="footer-info-header footer-headers">Who are we?</h2>
+        <p class="footer-text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis expedita autem voluptas hic, quis earum? Recusandae autem, voluptates repellat a explicabo
+        </p>
+        <h3 class="footer-business-hour footer-business-hours">Business Hours</h3>
+        <h3 class="footer-text">Monday - Friday: 8:00am - 5:00pm GMT</h3>
+      </div>
+      <div class="col-md-3">
+        <h2 class="footer-info-header footer-headers">Quick Access</h2>
+        <ul type="none" class="quick-access-container">
+          <li class="quick-access-link footer-text" *ngFor="let link of quickAccessLinks">
+            <a [routerLink]="link.target">{{link.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <h2 class="footer-info-header footer-headers">Recent Posts</h2>
+        <mat-grid-list class="social-media-posts" 
+          [cols]="socialMediaCols" rowHeight="fit" 
+          gutterSize="10px">
+          <mat-grid-tile *ngFor="let img of socialMediaPosts">
+            <img class="social-media-img" [src]="img" alt="">
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+    <hr>
+    <div class="copyright">
+      <h4 class="copyright-text footer-text">All Right Reserved <fa-icon [icon]="copyright"></fa-icon> Find-property, {{copyrightYear}}</h4>
+    </div>
+  </div>
+</footer>

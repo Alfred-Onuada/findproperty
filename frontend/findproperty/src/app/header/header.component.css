@@ -1,0 +1,46 @@
+header{
+  height: 100px;
+  width: 100%;
+  background-color: #FFFF;
+  z-index: 10;
+}
+.navbar-row{
+  height: 100px;
+}
+.logo-container{
+  display: flex;
+  align-items: center;
+}
+.logo{
+  height: 60px;
+  width: 200px;
+}
+.nav-items-container{
+  display: flex;
+  place-content: flex-end;
+  place-items: center;
+}
+.nav-btn{
+  margin: 0px 10px;
+  padding: 3px 15px;
+  width: fit-content;
+  color: #141B2D;
+  font-size: 15px;
+}
+.nav-btn > a{
+  text-decoration: none;
+  color: inherit;
+}
+.login-btn{
+  color: #FFFF;
+  padding: 10px 20px;
+  background-color: #0B505E;
+  height: 40px;
+  width: 90px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.sticky-box-shadow{
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}

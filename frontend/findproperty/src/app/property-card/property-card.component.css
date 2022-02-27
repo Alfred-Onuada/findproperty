@@ -1,0 +1,98 @@
+.property-card{
+  min-height: 460px;
+  height: fit-content;
+  width: 540px;
+  box-shadow: 0px 10px 30px rgba(0, 115, 225, 0.06);
+  background: #FFFF;
+  border-radius: 4px;
+  border: 0px;
+  margin: 20px 10px;
+}
+.property-card-img{
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+  height: 250px;
+}
+.card-img-and-price{
+  position: relative;
+}
+.property-price-container{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  height: 75px;
+  min-width: 135px;
+  width: fit-content;
+}
+.listing-type{
+  padding: 0px 15px;
+  width: 100%;
+  height: 30px;
+  background-color: #CF2626;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.listing-type > h4{
+  color: #FFFF;
+  margin: 0px;
+  font-size: 16px;
+}
+.property-price{
+  padding: 0px 15px;
+  width: 100%;
+  height: 45px;
+  background-color: #FA983A;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.property-price > h4{
+  margin: 0px;
+  font-size: 20px;
+  color: #FFFF;
+}
+.property-card-content{
+  padding: 15px 20px;
+}
+.property-card-title{
+  font-size: 16px;
+  margin: 0px 0px 10px 0px;
+  font-weight: 600;
+}
+.property-description{
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0px 0px 10px 0px;
+}
+.property-location-container{
+  display: flex;
+  place-items: center;
+}
+.property-icon{
+  margin-right: 10px;
+  color: #FA983A;
+  font-size: 18px;
+}
+.property-location{
+  margin: 0px;
+  font-size: 13px;
+}
+.property-highlights{
+  height: 40px;
+}
+.property-highlights-bottom{
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+.property-highlights-item{
+  margin: 0px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.vertical-line{
+  height: 30px;
+  position: absolute;
+  right: 0;
+}
