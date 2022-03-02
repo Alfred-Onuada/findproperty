@@ -3,11 +3,11 @@
 <fp-header></fp-header>
 
 <router-outlet>
-
+ 
   <div class="top-section-with-filter">
     <div class="container">
       <div class="row intro-row">
-        <div class="col-md-5">
+        <div class="col-md-5 col-sm-12 top-section-mobile">
           <h4 class="intro-header">Modern living for everyone</h4>
           <h6 class="intro-text">
             We provide a complete service for the sale, purchase or rental of real estate. We have been operating in Lagos and Abuja more than 4 years.
@@ -35,7 +35,7 @@
   <div class="brief-bio">
     <div class="container">
       <div class="row bio-row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
           <div class="moving-family-div">
             <img [src]="movingFamilyImage" alt="" class="moving-img">
             <div class="moving-family-image-border">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12 bio-mobile">
           <h3 class="breif-bio-heading">
             Are You Looking For The Best Property Near You?
           </h3>
@@ -78,7 +78,7 @@
   <div class="features-section">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 feature-container" *ngFor="let feature of features">
+        <div class="col-md-4 feature-container" *ngFor="let feature of features, let i = index">
           <div class="feature-icon-box">
             <fa-icon [icon]="feature.icon"></fa-icon>
           </div>
@@ -86,6 +86,7 @@
             <h4 class="title">{{feature.title}}</h4>
             <h4 class="description">{{feature.description}}</h4>
           </div>
+          <mat-divider class="mobile-divider" *ngIf="i != features.length - 1"></mat-divider>
         </div>        
       </div>
     </div>
@@ -101,7 +102,8 @@
       </div>
       <div class="featured-properties-card-container">
         <div class="row">
-          <div class="col-md-6" [ngClass]="((i+1) % 2 == 0) ? 'property-column-right' : 'property-column-left'" *ngFor="let property of featuredProperties, let i = index">
+          <!-- breakpoint is in the component class helps represent the cols in the partners section -->
+          <div class="col-md-6" [ngClass]="(((i+1) % 2 == 0) && breakpoint === 4) ? 'property-column-right' : 'property-column-left'" *ngFor="let property of featuredProperties, let i = index">
             <fp-property-card [propertyInfo]="property"></fp-property-card>
           </div>
         </div>
@@ -132,9 +134,10 @@
           There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some
         </h4>
       </div>
-      <mat-grid-list class="partners-image" rowHeight="fit" cols="4" gutterSize="10px">
+      <mat-grid-list class="partners-image" rowHeight="fit" [cols]="breakpoint"
+        (window:resize)="onResize($event)" gutterSize="10px">
         <mat-grid-tile *ngFor="let partner of partners">
-          <img [src]="partner.image" [alt]="partner.name" [title]="partner.name">
+          <img class="partner-image-tile" [src]="partner.image" [alt]="partner.name" [title]="partner.name">
         </mat-grid-tile>
       </mat-grid-list>
     </div>

@@ -48,7 +48,8 @@ footer{
 }
 .newsletter{
   width: 80vw;
-  height: 200px;
+  min-height: 200px;
+  height: fit-content;
   margin-bottom: -90px;
   background-color: #2D9DB2;
   display: flex;
@@ -125,4 +126,28 @@ hr{
 }
 .copyright > h4{
   margin-left: 10px;
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px) {
+  .subscribe-newsletter-div{
+    display: flex;
+    place-content: center;
+    place-items: center;
+    margin: 15px 0px 25px 0px;
+    flex-direction: column;
+  }
+
+  .newsletter{
+    padding: 20px 0px;
+  }
+
+  .subscribe-input{
+    width: 100%;
+  }
+
+  .subscribe-button{
+    display: none;
+  }
 }

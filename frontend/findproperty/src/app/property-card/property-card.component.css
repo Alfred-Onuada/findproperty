@@ -1,7 +1,7 @@
 .property-card{
   min-height: 460px;
   height: fit-content;
-  width: 540px;
+  max-width: 540px;
   box-shadow: 0px 10px 30px rgba(0, 115, 225, 0.06);
   background: #FFFF;
   border-radius: 4px;
@@ -95,4 +95,23 @@
   height: 30px;
   position: absolute;
   right: 0;
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px) {
+  .property-card{
+    min-height: 440px;
+    height: fit-content;
+    width: 100%;
+    box-shadow: 0px 10px 30px rgba(0, 115, 225, 0.06);
+    background: #FFFF;
+    border-radius: 4px;
+    border: 0px;
+    margin: 20px 0px;
+  }
+
+  .property-highlights-bottom{
+    flex-direction: column;
+  }
 }

@@ -31,7 +31,8 @@
 }
 .customer-review{
   text-align: left;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
 }
 .review-text{
   color: #FFFF;
@@ -68,4 +69,55 @@
   background-color: #2D9DB3;
   height: 14px;
   width: 14px;
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px) {
+  .customer-review{
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .carousel-content{
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column;
+  }
+
+  .customer-img > img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: fill;
+  }
+
+  .quotes{
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+    color: #FFFF;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    font-size: 10px;
+    background-color: #2D9DB2;
+    display: flex;
+    place-content: center;
+    place-items: center;
+  }
+
+  .review-text{
+    color: #FFFF;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .slide-controls{
+    place-content: center;
+  }
 }

@@ -26,7 +26,7 @@
 .select-action{
   height: fit-content;
   width: 80%;
-  padding: 10px 25px;
+  padding: 10px;
   background-color: #F3F3FA;
   border-radius: 3px;
 }
@@ -107,7 +107,8 @@
   place-items: center;
 }
 .partner-intro{
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   display: inline-block;
 }
 .partner-header{
@@ -123,10 +124,13 @@
   min-height: 300px;
   width: 100%;
 }
+.partner-image-tile{
+  width: 250px;
+  height: 160px;
+}
 .brief-bio{
   width: 100%;
   margin: 130px 0px;
-  padding: 0px 150px;
 }
 .bio-row{
   display: flex;
@@ -315,4 +319,135 @@
 .property-column-right{
   display: flex;
   place-content: flex-start;
+}
+
+.mobile-divider{
+  display: none;
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px)  {
+  .partners-image{
+    min-height: 300px;
+    width: 100%;
+  }
+
+  .partner-image-tile{
+    width: 150px;
+    height: 120px;
+  }
+
+  .testimonials-header{
+    font-size: 22px;
+  }
+
+  .testimonials-sub-header{
+    font-size: 13px;
+  }
+
+  .top-section-mobile{
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-header{
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  .intro-text{
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .dotted-div-container{
+    display: none;
+  }
+
+  .features-section{
+    padding: 80px 0px 50px 0px;
+  }
+
+  .feature-container{
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+    place-content: center;
+    place-items: flex-items;
+    padding: 0px 50px;
+  }
+
+  .title-and-description{
+    margin-bottom: 10px;
+  }
+
+  .mobile-divider{
+    display: block;
+    background-color: #F3F3FA;
+    bottom: 0;
+    right: 10%;
+    width: 80%;
+    position: absolute;
+  }
+  .brief-bio{
+    margin: 70px 0px;
+  }
+  .moving-family-div{
+    position: relative;
+    display: flex;
+    place-content: center;
+  }
+  .moving-img{
+    height: 350px;
+    width: 270px;
+  }
+  .moving-family-image-border{
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    border: 9px solid #FA983A;
+    height: 350px;
+    width: 270px;
+  }
+  .years-of-experience{
+    position: absolute;
+    bottom: -9px;
+    right: -9px;
+    height: 120px;
+    width: 120px;
+    background-color: #2D9DB2;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column;
+    padding: 15px;
+    text-align: center;
+  }
+  .years{
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFF;
+  }
+  .text-under-year{
+    font-size: 17px;
+    font-weight: 300;
+    color: #FFFF;
+    line-height: 23px;
+    margin: 0px;
+  }
+  .bio-mobile{
+    margin-top: 50px;
+    padding: 0px 30px;
+  }
+  .breif-bio-heading{
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .brief-bio-mini-heading{
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

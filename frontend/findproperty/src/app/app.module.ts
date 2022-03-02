@@ -14,6 +14,7 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import { formatNumber } from './pipes/numberFormatter.pipe';
 import { PropertyCardComponent } from './property-card/property-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     MatListModule,
     MatButtonModule,
     StickyNavModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

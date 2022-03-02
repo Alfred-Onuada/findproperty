@@ -23,6 +23,9 @@ export class AppComponent {
     { name: 'Google', image: 'assets/img/comp4.png' },
   ]
 
+  // cols dependent on breakpoint
+  breakpoint:number = window.innerWidth <= 480 ? 2 : 4;
+
   // for the icons under the brief bio
   bioStats: IStats[] = [
     { name: 'Properties Listed', count: 35000, icon: faHome},
@@ -127,6 +130,10 @@ export class AppComponent {
       customerOrganization: "Google LLC"
     }
   ]
+
+  onResize(event: Event | any) : void {
+    this.breakpoint = event.target.innerWidth <= 480 ? 2 : 4;
+  }
 
   loadMore() : void {
     this.featuredProperties.push(...this.featuredProperties);

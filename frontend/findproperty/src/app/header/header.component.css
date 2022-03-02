@@ -9,7 +9,8 @@ header{
 }
 .logo-container{
   display: flex;
-  align-items: center;
+  height: 100%;
+  place-items: center;
 }
 .logo{
   height: 60px;
@@ -43,4 +44,23 @@ header{
 }
 .sticky-box-shadow{
   box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}
+
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px) {
+  header{
+    height: 75px;
+  }
+  .navbar-row{
+    height: 75px;
+  }
+  .logo{
+    height: 50px;
+    width: 200px;
+  }
+  .nav-items-container{
+    display: none;
+  }
 }

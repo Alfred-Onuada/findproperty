@@ -19,24 +19,32 @@
     </div>
     <hr>
     <mat-grid-list class="property-highlights" cols="4" rowHeight="fit" gutterSize="5px">
-      <mat-grid-tile class="property-highlights-bottom">
-        <fa-icon class="property-icon" [icon]="bedIcon"></fa-icon>
-        <h4 class="property-highlights-item">{{propertyInfo.highlights.bedsCount}} Bed(s)</h4>
-        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      <mat-grid-tile>
+        <div class="property-highlights-bottom">
+          <fa-icon class="property-icon" [icon]="bedIcon"></fa-icon>
+          <h4 class="property-highlights-item">{{propertyInfo.highlights.bedsCount}} Bed(s)</h4>
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+        </div>
       </mat-grid-tile>
-      <mat-grid-tile class="property-highlights-bottom">
-        <fa-icon class="property-icon" [icon]="bathIcon"></fa-icon>
-        <h4 class="property-highlights-item">{{propertyInfo.highlights.bathsCount}} Bath(s)</h4>
-        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      <mat-grid-tile>
+        <div class="property-highlights-bottom">
+          <fa-icon class="property-icon" [icon]="bathIcon"></fa-icon>
+          <h4 class="property-highlights-item">{{propertyInfo.highlights.bathsCount}} Bath(s)</h4>
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+        </div>
       </mat-grid-tile>
-      <mat-grid-tile class="property-highlights-bottom">
-        <fa-icon class="property-icon" [icon]="roomIcon"></fa-icon>
-        <h4 class="property-highlights-item">{{propertyInfo.highlights.roomsCount}} Room(s)</h4>
-        <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+      <mat-grid-tile>
+        <div class="property-highlights-bottom">
+          <fa-icon class="property-icon" [icon]="roomIcon"></fa-icon>
+          <h4 class="property-highlights-item">{{propertyInfo.highlights.roomsCount}} Room(s)</h4>
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+        </div>
       </mat-grid-tile>
-      <mat-grid-tile class="property-highlights-bottom">
-        <fa-icon class="property-icon" [icon]="landIcon"></fa-icon>
-        <h4 class="property-highlights-item">{{propertyInfo.highlights.landArea}} sq</h4>
+      <mat-grid-tile>
+        <div class="property-highlights-bottom">
+          <fa-icon class="property-icon" [icon]="landIcon"></fa-icon>
+          <h4 class="property-highlights-item">{{propertyInfo.highlights.landArea}} sq</h4>
+        </div>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
