@@ -8,13 +8,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatGridListModule } from '@angular/material/grid-list'
-import { MatListModule } from '@angular/material/list'
-import { MatButtonModule } from '@angular/material/button'
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { formatNumber } from './pipes/numberFormatter.pipe';
 import { PropertyCardComponent } from './property-card/property-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { MatDividerModule } from '@angular/material/divider';
     FooterComponent,
     formatNumber,
     PropertyCardComponent,
-    CarouselComponent
+    CarouselComponent,
+    SignUpComponent,
+    SignInComponent,
+    PageNotFoundComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

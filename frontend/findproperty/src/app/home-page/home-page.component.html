@@ -1,0 +1,138 @@
+<div class="top-section-with-filter">
+  <div class="container">
+    <div class="row intro-row">
+      <div class="col-md-5 col-sm-12 top-section-mobile">
+        <h4 class="intro-header">Modern living for everyone</h4>
+        <h6 class="intro-text">
+          We provide a complete service for the sale, purchase or rental of real estate. We have been operating in Lagos and Abuja more than 4 years.
+        </h6>
+        <div class="select-action">
+          <button mat-stroked-button class="rent-a-house-btn">Rent a House</button>
+          <button mat-flat-button class="buy-a-house-btn">Buy a House</button>
+        </div>
+      </div>
+      <div class="col-md-7 dotted-div-container">
+        <div class="dotted-divs">
+          <div class="dotted-div"></div>
+          <div class="dotted-div"></div>
+          <div class="dotted-div"></div>
+          <div class="fake-sky"></div>
+        </div>
+        <div class="top-section-image">
+          <img [src]="topImage" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brief-bio">
+  <div class="container">
+    <div class="row bio-row">
+      <div class="col-md-6 col-sm-12">
+        <div class="moving-family-div">
+          <img [src]="movingFamilyImage" alt="" class="moving-img">
+          <div class="moving-family-image-border">
+            <div class="years-of-experience">
+              <h1 class="years">7+</h1>
+              <h3 class="text-under-year">Years of Experience</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 bio-mobile">
+        <h3 class="breif-bio-heading">
+          Are You Looking For The Best Property Near You?
+        </h3>
+        <h4 class="brief-bio-mini-heading">Who We Are</h4>
+        <p class="brief-bio-text">
+          It is a long established fact that a reader will be distracted by the readable content 
+          of a page when looking at its layout. The point of using Lorem Ipsum is that it has normal distribution.
+        </p>
+        <p class="brief-bio-text">
+          It is a long established fact that a reader will be 
+          distracted by the readable content of a page when looking at its layout.
+        </p>
+        <div class="bio-stats-container">
+          <div class="bio-stats" *ngFor="let stat of bioStats">
+            <div class="stats-icon-box">
+              <fa-icon [icon]="stat.icon"></fa-icon>
+            </div>
+            <div>
+              <h4 class="stat-quantity">{{stat.count | formatNumber}}</h4>
+              <h4 class="stat-name">{{stat.name}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 feature-container" *ngFor="let feature of features, let i = index">
+        <div class="feature-icon-box">
+          <fa-icon [icon]="feature.icon"></fa-icon>
+        </div>
+        <div class="title-and-description">
+          <h4 class="title">{{feature.title}}</h4>
+          <h4 class="description">{{feature.description}}</h4>
+        </div>
+        <mat-divider class="mobile-divider" *ngIf="i != features.length - 1"></mat-divider>
+      </div>        
+    </div>
+  </div>
+</div>
+
+<div class="featured-properties-section">
+  <div class="container">
+    <div class="featured-properties-heading">
+      <h2 class="featured-properties-title">Our Featured Property</h2>
+      <h4 class="featured-properties-sub-title">
+        There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some
+      </h4>
+    </div>
+    <div class="featured-properties-card-container">
+      <div class="row">
+        <!-- breakpoint is in the component class helps represent the cols in the partners section -->
+        <div class="col-md-6" [ngClass]="(((i+1) % 2 == 0) && breakpoint === 4) ? 'property-column-right' : 'property-column-left'" *ngFor="let property of featuredProperties, let i = index">
+          <fp-property-card [propertyInfo]="property"></fp-property-card>
+        </div>
+      </div>
+    </div>
+    <div class="load-more-container">
+      <button mat-flat-button class="more-properties-btn" (click)="loadMore()">Load More Properties</button>
+    </div>
+  </div>
+</div>
+
+<div class="testimonials-section">
+  <div class="container testimonials-content">
+    <h2 class="testimonials-header">What Our Clients Say</h2>
+    <h4 class="testimonials-sub-header">
+      There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some
+    </h4>
+    <div class="testimonials-carousel">
+      <fp-carousel [slides]="customerReviews"></fp-carousel>
+    </div>
+  </div>
+</div>
+
+<div class="partners-section">
+  <div class="container">
+    <div class="partner-intro">
+      <h2 class="partner-header">Our Trusted Partners</h2>
+      <h4 class="partner-text">
+        There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some
+      </h4>
+    </div>
+    <mat-grid-list class="partners-image" rowHeight="fit" [cols]="breakpoint"
+      (window:resize)="onResize($event)" gutterSize="10px">
+      <mat-grid-tile *ngFor="let partner of partners">
+        <img class="partner-image-tile" [src]="partner.image" [alt]="partner.name" [title]="partner.name">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

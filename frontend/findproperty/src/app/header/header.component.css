@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 header{
   height: 100px;
   width: 100%;
@@ -11,6 +13,7 @@ header{
   display: flex;
   height: 100%;
   place-items: center;
+  /* width: fit-content; */
 }
 .logo{
   height: 60px;
@@ -27,8 +30,9 @@ header{
   width: fit-content;
   color: #141B2D;
   font-size: 15px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
-.nav-btn > a{
+.nav-btn-anchor{
   text-decoration: none;
   color: inherit;
 }
@@ -45,22 +49,57 @@ header{
 .sticky-box-shadow{
   box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
 }
-
+.nav-bar-toggler{
+  display: none;
+}
 
 /* Mobile CSS */
 
 @media only screen and (max-width: 480px) {
   header{
-    height: 75px;
+    height: 65px;
   }
   .navbar-row{
-    height: 75px;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    justify-content: space-between;
+  }
+  .logo-container{
+    width: fit-content;
   }
   .logo{
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 150px;
   }
   .nav-items-container{
     display: none;
+  }
+  .nav-bar-toggler{
+    display: flex;
+    flex-direction: column;
+    place-items: flex-end;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  .toggler-1, .toggler-2, .toggler-3{
+    background-color: #14505B;
+    height: 4px;
+    border-radius: 2px;
+  }
+  .toggler-1{
+    width: 22px;
+    margin-bottom: 2px;
+  }
+  .toggler-2{
+    width: 33px;
+    margin: 2px 0px;
+  }
+  .toggler-3{
+    margin-top: 2px;
+    width: 28px;
   }
 }

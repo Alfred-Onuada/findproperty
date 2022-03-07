@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.blue-header-seperator{
+  color: #2D9DB2;
+  height: 2px;
+  width: 100%;
+  margin: 0px;
+}
+.sign-up-section{
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  place-items: center;
+}
+.sign-up-section > .container{
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-direction: column;
+}
+.sign-up-header{
+  font-size: 32px;
+  color: #14505B;
+  margin: 0px;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+.sign-up-sub-title{
+  color: #A19F9F;
+  font-size: 15px;
+  margin: 10px 0px 0px 0px;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+.sign-up-form{
+  margin: 20px 0px;
+  width: 550px;
+}
+.signin-form-input{
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 15px 0px;
+  border: 1px solid #2D9DB2;
+  border-radius: 5px;
+  padding: 0px 25px;
+}
+.signin-form-input:focus{
+  outline-color: #2D9DB2;
+}
+.password-container{
+  position: relative;;
+}
+.show-password{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 17px;
+  color: #2D9DB2;
+}
+.remember-device-container{
+  margin: 15px 0px;
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  place-items: center;
+  width: 100%;
+}
+.remember-device-checkbox{
+  border: 1px solid #14505B;
+  height: 15px;
+  width: 15px;
+}
+.remember-device-text{
+  margin: 0px 0px 0px 7px;
+  color: #14505B;
+  font-size: 13px;
+}
+.signin-submit-btn{
+  width: 100%;
+  height: 40px;
+  background-color: #14505B;
+  border: 0px;
+  border-radius: 5px;
+  color: #FFFF;
+  font-size: 14px;
+  box-shadow: 0px 4px 61px rgba(77, 71, 195, 0.4);
+}
+.sign-up-0auth{
+  height: fit-content;
+}
+.oauth-title{
+  font-size: 14px;
+  color: #B5B5B5;
+  margin: 5px 0px;
+  text-align: center;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+.oauth-client-grid{
+  height: 50px;
+  width: 200px;
+}
+.oauth-icon{
+  height: 35px;
+}
+.forgot-password-container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.login-text, .login-link{
+  font-size: 14px;
+  margin: 0px 5px;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+.login-link{
+  color: #2D9DB2;
+}
+.login-link:hover{
+  cursor: pointer;
+}
+
+/* Mobile Css */
+@media only screen and (max-width: 480px) {
+  .sign-up-header{
+    font-size: 25px;
+  }
+  .sign-up-sub-title{
+    font-size: 13px;
+  }
+  .sign-up-form{
+    margin: 20px 0px;
+    width: 95%;
+  }
+}

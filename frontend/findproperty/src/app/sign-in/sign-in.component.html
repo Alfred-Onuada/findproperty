@@ -1,0 +1,38 @@
+<!-- provides a division for the header -->
+<hr class="blue-header-seperator">
+
+<div class="sign-in-section">
+  <div class="container">
+    <h4 class="sign-in-header">Welcome Back</h4>
+    <h4 class="sign-in-sub-title">
+      Please enter your email address and password
+    </h4>
+    <div class="sign-in-form">
+      <form (submit)="loginFunc()">
+        <input class="signin-form-input" type="text" placeholder="Enter your email" autocomplete="off">
+        <div class="password-container">
+          <input class="signin-form-input" type="password" placeholder="Enter your password" autocomplete="off">
+          <fa-icon [icon]="showPasswordIcon" class="show-password" 
+            (click)="alternateShowPassword()"></fa-icon>
+        </div>
+        <div class="remember-device-container">
+          <input type="checkbox" class="remember-device-checkbox">
+          <h4 class="remember-device-text">Remember this device</h4>
+        </div>
+        <button type="submit" class="signin-submit-btn">Login</button>
+      </form>
+    </div>
+    <div class="sign-in-0auth">
+      <h4 class="oauth-title">or continue with</h4>
+      <mat-grid-list class="oauth-client-grid" rowHeight="fit" cols="3">
+        <mat-grid-tile *ngFor="let client of oAuth">
+          <img class="oauth-icon" [src]="client.icon" (click)="client.func()">
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="forgot-password-container">
+      <h4 class="forgot-password-text">Reset Password</h4>
+      <h4 class="create-account-text" routerLink="/sign-up">Create an account</h4>
+    </div>
+  </div>
+</div>

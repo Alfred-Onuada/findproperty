@@ -78,6 +78,9 @@ footer{
 .footer-padding-large{
   padding-top:  170px;
 }
+.footer-padding-small{
+  padding-top: 70px;
+}
 .footer-headers{
   color: #FFFF;
   font-weight: 400;

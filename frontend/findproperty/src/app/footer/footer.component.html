@@ -1,11 +1,12 @@
-<div class="newsletter-container">
+
+<!-- this div is for the newsletter it's appearance will be based on if the user is registered or not and the current page -->
+<div class="newsletter-container" *ngIf="(isRegistered == false && (currentRouteIsHomePage$ | async))">
   <div (click)="scrollTop()" class="go-to-top">
     <div class="go-to-icon"></div>
   </div>
   <div class="newsletter">
     <div class="row" style="width: 90%;">
-      <!-- this div is for the newsletter it's appearance will be based on if the user is registered or not -->
-      <div class="col-md-8 col-sm-12 subscribe-newsletter-div" *ngIf="isRegistered == false">
+      <div class="col-md-8 col-sm-12 subscribe-newsletter-div">
         <h4 class="footer-headers">Subscribe To Our Newsletter</h4>
         <form method="post" (submit)="subscribeToEmail()">
           <input class="subscribe-input" type="email" placeholder="example@abc.com">
@@ -28,7 +29,7 @@
 </div>
 
 <footer>
-  <div class="container footer-padding-large">
+  <div class="container" [ngClass]="(isRegistered == false && (currentRouteIsHomePage$ | async)) ? 'footer-padding-large' : 'footer-padding-small'">
     <div class="row">
       <div class="col-md-4 col-sm-12">
         <h2 class="footer-info-header footer-headers">Who are we?</h2>

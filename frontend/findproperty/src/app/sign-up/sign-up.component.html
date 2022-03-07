@@ -1,0 +1,41 @@
+<!-- provides a division for the header -->
+<hr class="blue-header-seperator">
+
+<div class="sign-up-section">
+  <div class="container">
+    <h4 class="sign-up-header">Register</h4>
+    <h4 class="sign-up-sub-title">
+      We are glad to have you, please fill all fields
+    </h4>
+    <div class="sign-up-form">
+      <form (submit)="registerFunc()">
+        <input class="signin-form-input" type="text" placeholder="Enter your full name" autocomplete="off">
+        <input class="signin-form-input" type="text" placeholder="Enter your email" autocomplete="off">
+        <input class="signin-form-input" type="text" placeholder="Enter your telephone number" autocomplete="off">
+        <div class="password-container">
+          <input class="signin-form-input" type="password" placeholder="Enter your password" autocomplete="off">
+          <fa-icon [icon]="showPasswordIcon1" class="show-password" 
+            (click)="alternateShowPassword(1)"></fa-icon>
+        </div>
+        <div class="password-container">
+          <input class="signin-form-input" type="password" placeholder="Confirm password" autocomplete="off">
+          <fa-icon [icon]="showPasswordIcon2" class="show-password" 
+            (click)="alternateShowPassword(2)"></fa-icon>
+        </div>
+        <button type="submit" class="signin-submit-btn">Sign Up</button>
+      </form>
+    </div>
+    <div class="sign-up-0auth">
+      <h4 class="oauth-title">or continue with</h4>
+      <mat-grid-list class="oauth-client-grid" rowHeight="fit" cols="3">
+        <mat-grid-tile *ngFor="let client of oAuth">
+          <img class="oauth-icon" [src]="client.icon" (click)="client.func()">
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="forgot-password-container">
+      <h4 class="login-link" routerLink="/sign-in">Login</h4>
+      <h4 class="login-text">if you already have an account</h4>
+    </div>
+  </div>
+</div>

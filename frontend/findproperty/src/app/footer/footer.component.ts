@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { faFacebookF, faInstagram, faPinterestP, faTelegramPlane, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faCopyright, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faAngleUp, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { filter, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { IIconLinks } from '../interfaces/iconLinks';
 import { ILinks } from '../interfaces/links';
 
@@ -17,6 +20,7 @@ export class FooterComponent implements OnInit {
 
   // controls the appearance of the subscribe div
   isRegistered: boolean = false;
+  currentRouteIsHomePage$: Observable<boolean> = of(false);
 
   // for copyright info on footer
   copyright = faCopyright;
@@ -46,7 +50,7 @@ export class FooterComponent implements OnInit {
     { name: 'Contact Us', target: '/'}
   ];
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.socialMediaPosts = [
       'assets/img/social1.png',
       'assets/img/social2.png',
@@ -66,6 +70,14 @@ export class FooterComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    // this subscribes to the router navigation events and changes the value of the currentRoute each time
+    // the map will return either true or false depending on what is returned by filter
+    this.currentRouteIsHomePage$ = this.router.events.pipe(
+      filter((e) => e instanceof NavigationEnd),
+      map((e) => (e instanceof NavigationEnd && e.url === '/'))
+    )
+
+    this.currentRouteIsHomePage$.subscribe()
   }
 
 }

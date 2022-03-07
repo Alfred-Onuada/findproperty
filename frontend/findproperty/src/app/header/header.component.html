@@ -1,28 +1,33 @@
 <header ngStickyNav stickyClass="sticky-box-shadow">
   <div class="container">
     <div class="row navbar-row">
-      <div class="logo-container col-md-4">
+      <div routerLink="/" class="logo-container col-md-4">
         <img class="logo" [src]="logoLocation" alt="">
       </div>
       <div class="col-md-8 nav-items-container">
-        <button mat-button class="nav-btn">
-          <a [routerLink]="">Home</a>
+        <button [disableRipple]="true" mat-button class="nav-btn">
+          <a class="nav-btn-anchor" routerLink="">Home</a>
         </button>
-        <button mat-button class="nav-btn">
-          <a [routerLink]="">Find a Property</a>
+        <button [disableRipple]="true" mat-button class="nav-btn">
+          <a class="nav-btn-anchor" routerLink="">Find a Property</a>
         </button>
-        <button mat-button class="nav-btn">
-          <a [routerLink]="">Top Offers</a>
+        <button [disableRipple]="true" mat-button class="nav-btn">
+          <a class="nav-btn-anchor" routerLink="">Top Offers</a>
         </button>
-        <button mat-button class="nav-btn">
-          <a [routerLink]="">Contact Us</a>
-        </button>
-        <button mat-button class="nav-btn">
-          <a [routerLink]="">About Us</a>
+        <button [disableRipple]="true" mat-button class="nav-btn">
+          <a class="nav-btn-anchor" routerLink="">About Us</a>
         </button>
         <button mat-flat-button class="nav-btn login-btn">
-          <a [routerLink]="">Login</a>
+          <a class="nav-btn-anchor" routerLink="/sign-in">Sign In</a>
         </button>
+        <button mat-flat-button class="nav-btn login-btn">
+          <a class="nav-btn-anchor" routerLink="/sign-up">Sign Up</a>
+        </button>
+      </div>
+      <div class="nav-bar-toggler">
+        <div class="toggler-1"></div>
+        <div class="toggler-2"></div>
+        <div class="toggler-3"></div>
       </div>
     </div>
   </div>
