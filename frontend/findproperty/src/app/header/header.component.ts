@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
 
   logoLocation: string = 'assets/img/logo.png';
   navIsOpen: boolean = false;
+  isMobile: boolean = window.innerWidth < 825;
   
   constructor(
     private titleService: Title

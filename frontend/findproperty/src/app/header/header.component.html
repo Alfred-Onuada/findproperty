@@ -9,39 +9,37 @@
         <div class="toggler-2"></div>
         <div class="toggler-3"></div>
       </div>
-      <div class="col-md-8 nav-items-container">
-        <div class="nav-contents">
-          <mat-divider class="nav-divider"></mat-divider>
-          <button [disableRipple]="true" mat-button class="nav-btn nav-btn-top"
-            (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" routerLink="/">
-            <a class="nav-btn-anchor">Home</a>
-          </button>
-          <mat-divider class="nav-divider"></mat-divider>
-          <button [disableRipple]="true" mat-button class="nav-btn"
-            (click)="setTitle('Find a Home Quickly | Find-Property')" routerLink="/">
-            <a class="nav-btn-anchor">Find a Property</a>
-          </button>
-          <mat-divider class="nav-divider"></mat-divider>
-          <button [disableRipple]="true" mat-button class="nav-btn"
-            (click)="setTitle('Top Offers | Find-Property')" routerLink="/">
-            <a class="nav-btn-anchor">Top Offers</a>
-          </button>
-          <mat-divider class="nav-divider"></mat-divider>
-          <button [disableRipple]="true" mat-button class="nav-btn"
-            (click)="setTitle('Company Info | Find-Property')" routerLink="/">
-            <a class="nav-btn-anchor">About Us</a>
-          </button>
-          <mat-divider class="nav-divider"></mat-divider>
-          <button mat-flat-button class="nav-btn login-btn"
-            (click)="setTitle('Sign In | Find-Property')" routerLink="/sign-in">
-            <a class="nav-btn-anchor">Sign In</a>
-          </button>
-          <mat-divider class="nav-divider"></mat-divider>
-          <button mat-flat-button class="nav-btn login-btn"
-            (click)="setTitle('Sign Up | Find-Property')" routerLink="/sign-up">
-            <a class="nav-btn-anchor">Sign Up</a>
-          </button>
-        </div>
+      <div class="col-md-8 nav-items-container" [@responsiveNav]="navIsOpen ? 'open' : [ isMobile ? 'closed' : '' ]">
+        <mat-divider class="nav-divider-top"></mat-divider>
+        <button [disableRipple]="true" mat-button class="nav-btn"
+          (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" routerLink="/">
+          <a class="nav-btn-anchor">Home</a>
+        </button>
+        <mat-divider class="nav-divider"></mat-divider>
+        <button [disableRipple]="true" mat-button class="nav-btn"
+          (click)="setTitle('Find a Home Quickly | Find-Property')" routerLink="/">
+          <a class="nav-btn-anchor">Find a Property</a>
+        </button>
+        <mat-divider class="nav-divider"></mat-divider>
+        <button [disableRipple]="true" mat-button class="nav-btn"
+          (click)="setTitle('Top Offers | Find-Property')" routerLink="/">
+          <a class="nav-btn-anchor">Top Offers</a>
+        </button>
+        <mat-divider class="nav-divider"></mat-divider>
+        <button [disableRipple]="true" mat-button class="nav-btn"
+          (click)="setTitle('Company Info | Find-Property')" routerLink="/">
+          <a class="nav-btn-anchor">About Us</a>
+        </button>
+        <mat-divider class="nav-divider"></mat-divider>
+        <button mat-flat-button class="nav-btn login-btn"
+          (click)="setTitle('Sign In | Find-Property')" routerLink="/sign-in">
+          <a class="nav-btn-anchor">Sign In</a>
+        </button>
+        <mat-divider class="nav-divider"></mat-divider>
+        <button mat-flat-button class="nav-btn login-btn"
+          (click)="setTitle('Sign Up | Find-Property')" routerLink="/sign-up">
+          <a class="nav-btn-anchor">Sign Up</a>
+        </button>
       </div>
     </div>
   </div>

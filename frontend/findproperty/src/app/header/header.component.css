@@ -23,6 +23,7 @@ header{
   display: flex;
   place-content: flex-end;
   place-items: center;
+  height: 100%;
 }
 .nav-btn{
   margin: 0px 10px;
@@ -52,11 +53,8 @@ header{
 .nav-bar-toggler{
   display: none;
 }
-.nav-divider{
+.nav-divider, .nav-divider-top{
   display: none;
-}
-.nav-contents{
-  display: flex;
 }
 
 /* Tablet CSS */
@@ -71,8 +69,21 @@ header{
     place-items: center;
     justify-content: space-between;
   }
+  .nav-divider-top{
+    margin: 0px 0px 5px 0px;
+    padding: 0;
+  }
   .nav-items-container{
-    display: none;
+    height: 0px;
+    position: absolute;
+    display: list-item;
+    list-style: none;
+    top: 85px;
+    left: 0;
+    width: 100vw;
+    background-color: #FFFF;
+    z-index: 10;
+    overflow: hidden;
   }
   .nav-bar-toggler{
     display: flex;
@@ -121,6 +132,13 @@ header{
     flex-direction: row;
     place-items: center;
     justify-content: space-between;
+  }
+  .nav-items-container{
+    top: 65px;
+  }
+  .nav-divider-top{
+    margin: 0px 0px 7px 0px;
+    padding: 0;
   }
   .logo{
     height: 40px;
