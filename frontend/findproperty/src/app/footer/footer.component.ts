@@ -7,6 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { IIconLinks } from '../interfaces/iconLinks';
 import { ILinks } from '../interfaces/links';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'fp-footer',
@@ -50,7 +51,10 @@ export class FooterComponent implements OnInit {
     { name: 'Contact Us', target: '/'}
   ];
 
-  constructor(private router: Router) { 
+  constructor(
+    private router: Router,
+    private titleService: Title
+  ) { 
     this.socialMediaPosts = [
       'assets/img/social1.png',
       'assets/img/social2.png',
@@ -59,6 +63,11 @@ export class FooterComponent implements OnInit {
       'assets/img/social5.png',
       'assets/img/social6.png',
     ]
+  }
+
+  // this method exposes a global function used for setting the title
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
   scrollTop() : void {

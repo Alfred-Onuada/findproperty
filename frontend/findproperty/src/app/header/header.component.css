@@ -52,26 +52,24 @@ header{
 .nav-bar-toggler{
   display: none;
 }
+.nav-divider{
+  display: none;
+}
+.nav-contents{
+  display: flex;
+}
 
-/* Mobile CSS */
-
-@media only screen and (max-width: 480px) {
+/* Tablet CSS */
+@media only screen and (max-width: 825px) {
   header{
-    height: 65px;
+    height: 85px;
   }
   .navbar-row{
-    height: 65px;
+    height: 85px;
     display: flex;
     flex-direction: row;
     place-items: center;
     justify-content: space-between;
-  }
-  .logo-container{
-    width: fit-content;
-  }
-  .logo{
-    height: 40px;
-    width: 150px;
   }
   .nav-items-container{
     display: none;
@@ -101,5 +99,31 @@ header{
   .toggler-3{
     margin-top: 2px;
     width: 28px;
+  }
+  .logo-container{
+    width: fit-content;
+  }
+  .nav-divider{
+    display: block;
+    margin: 10px 0px;
+  }
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 480px) {
+  header{
+    height: 65px;
+  }
+  .navbar-row{
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    justify-content: space-between;
+  }
+  .logo{
+    height: 40px;
+    width: 150px;
   }
 }

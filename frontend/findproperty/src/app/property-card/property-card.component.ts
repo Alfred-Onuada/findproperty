@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBath, faBed, faRobot, faRulerHorizontal, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 import { IProperties } from '../interfaces/properties';
@@ -19,8 +20,15 @@ export class PropertyCardComponent implements OnInit {
   roomIcon: IconProp = faBed;
   landIcon: IconProp = faRulerHorizontal;
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) { }
 
+  // this method exposes a global function used for setting the title
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
+  
   ngOnInit(): void {
   }
 

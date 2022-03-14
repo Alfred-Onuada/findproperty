@@ -131,6 +131,13 @@ hr{
   margin-left: 10px;
 }
 
+/* Tablet CSS */
+@media only screen and (max-width: 825px) {
+  .social-icons-div{
+    padding: 0px;
+  }
+}
+
 /* Mobile CSS */
 
 @media only screen and (max-width: 480px) {
@@ -141,15 +148,12 @@ hr{
     margin: 15px 0px 25px 0px;
     flex-direction: column;
   }
-
   .newsletter{
     padding: 20px 0px;
   }
-
   .subscribe-input{
     width: 100%;
   }
-
   .subscribe-button{
     display: none;
   }

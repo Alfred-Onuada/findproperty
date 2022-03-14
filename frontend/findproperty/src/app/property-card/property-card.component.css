@@ -97,6 +97,17 @@
   right: 0;
 }
 
+/* Tablet CSS */
+@media only screen and (max-width: 825px) {
+  .property-card-img{
+    height: 200px;
+  }
+  .property-highlights-bottom{
+    flex-direction: column;
+  }
+}
+
+
 /* Mobile CSS */
 
 @media only screen and (max-width: 480px) {
@@ -108,12 +119,6 @@
     border-radius: 4px;
     border: 0px;
     margin: 20px 0px;
-  }
-  .property-card-img{
-    height: 200px;
-  }
-  .property-highlights-bottom{
-    flex-direction: column;
   }
   .property-price-container{
     bottom: 10px;

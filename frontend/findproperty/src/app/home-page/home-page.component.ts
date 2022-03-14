@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { faHandHoldingUsd, faHome, faSearchLocation, faTruckMoving } from '@fortawesome/free-solid-svg-icons';
 import { IFeatures } from '../interfaces/features';
 import { IPartners } from '../interfaces/partners';
@@ -13,7 +14,9 @@ import { IStats } from '../interfaces/stats';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) { }
 
   title = 'findproperty';
   topImage = 'assets/img/top-image.png';
@@ -133,6 +136,11 @@ export class HomePageComponent implements OnInit {
       customerOrganization: "Google LLC"
     }
   ]
+
+  // this method exposes a global function used for setting the title
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 
   onResize(event: Event | any) : void {
     this.breakpoint = event.target.innerWidth <= 480 ? 2 : 4;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faApple, faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
@@ -20,9 +21,13 @@ export class SignInComponent implements OnInit {
     { icon: 'assets/img/facebook.png', func: this.oAuthClick }
   ]
   
-  constructor() { 
-    // scrolls the page to the top
-    window.scrollTo(0, 0);
+  constructor(
+    private titleService: Title
+  ) { }
+
+  // this method exposes a global function used for setting the title
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
   ngOnInit(): void {

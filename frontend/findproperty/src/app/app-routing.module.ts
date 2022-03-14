@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -12,8 +12,13 @@ const routes: Routes = [
   { path: "**", component: PageNotFoundComponent}
 ];
 
+// there are a lot more configuarations and will be added only as needed
+const routerConfig: ExtraOptions = {
+  scrollPositionRestoration: 'enabled'
+}
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerConfig)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
