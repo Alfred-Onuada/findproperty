@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleNav(): void {
-    this.navIsOpen = !this.navIsOpen;
+    this.navIsOpen = this.isMobile ? !this.navIsOpen : this.navIsOpen;
   }
 
   navAnimationEventHandler(event: AnimationEvent): void {
