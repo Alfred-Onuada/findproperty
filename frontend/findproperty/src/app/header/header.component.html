@@ -5,9 +5,9 @@
         <img class="logo" [src]="logoLocation" alt="">
       </div>
       <div class="nav-bar-toggler" (click)="toggleNav()">
-        <div class="toggler-1"></div>
-        <div class="toggler-2"></div>
-        <div class="toggler-3"></div>
+        <div class="toggler-1" [@hamburgerAnimation-top]="navIsOpen ? 'crossed' : 'flat'"></div>
+        <div class="toggler-2" [@hamburgerAnimation-mid]="navIsOpen ? 'hidden' : 'visible'"></div>
+        <div class="toggler-3" [@hamburgerAnimation-bottom]="navIsOpen ? 'crossed' : 'flat'"></div>
       </div>
       <div class="col-md-8 nav-items-container" [@responsiveNav]="navIsOpen ? 'open' : [ isMobile ? 'closed' : '' ]">
         <mat-divider class="nav-divider-top"></mat-divider>

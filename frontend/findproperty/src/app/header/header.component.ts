@@ -24,7 +24,73 @@ import { Title } from '@angular/platform-browser';
           style({ height: '0px' }),
         ]))
       ])
-    ])
+    ]),
+    trigger('hamburgerAnimation-top', [
+      state('crossed', style({
+        width: '33px',
+        transform: 'rotate(45deg) translate(11px, 0px)'
+      })),
+      state('flat', style({
+        width: '22px',
+        transform: 'rotate(0deg)'
+      })),
+      transition('flat => crossed', [
+        animate('.3s', style({
+          width: '33px',
+          transform: 'rotate(45deg) translate(11px, 0px)'
+        }))
+      ]),
+      transition('crossed => flat', [
+        animate('.3s', style({
+          width: '22px',
+          transform: 'rotate(0deg)'
+        }))
+      ])
+    ]),
+    trigger('hamburgerAnimation-mid', [
+      state('visible', style({
+        opacity: '1',
+        transform: 'translateX(0px)'
+      })),
+      state('hidden', style({
+        opacity: '0',
+        transform: 'translateX(-50px)'
+      })),
+      transition('visible => hidden', [
+        animate('.3s', style({ 
+          opacity: '0',
+          transform: 'translateX(-50px)'
+        }))
+      ]),
+      transition('hidden => visible', [
+        animate('.3s', style({ 
+          opacity: '1',
+          transform: 'translateX(0px)'
+        }))
+      ])
+    ]),
+    trigger('hamburgerAnimation-bottom', [
+      state('crossed', style({
+        width: '33px',
+        transform: 'rotate(-45deg) translate(11px, 0px)'
+      })),
+      state('flat', style({
+        width: '28px',
+        transform: 'rotate(0deg)'
+      })),
+      transition('flat => crossed', [
+        animate('.3s', style({
+          width: '33px',
+          transform: 'rotate(-45deg) translate(11px, 0px)'
+        }))
+      ]),
+      transition('crossed => flat', [
+        animate('.3s', style({
+          width: '28px',
+          transform: 'rotate(0deg)'
+        }))
+      ])
+    ]),
   ]
 })
 export class HeaderComponent implements OnInit {
