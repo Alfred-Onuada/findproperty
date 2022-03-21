@@ -1,0 +1,81 @@
+<div class="property-description-section">
+  <div class="container">
+    <div class="images-carousel">
+      <fp-big-carousel [slides]="propertyInfo.images"></fp-big-carousel>
+    </div>
+    <div class="home-description">
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 description-name">
+          <h4>{{propertyInfo.title}}</h4>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 description-date-and-views">
+          <div class="description-date">
+            <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date}}
+          </div>
+          <div class="description-views">
+            <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views | formatNumber}} views
+          </div>
+        </div>
+      </div>
+      <p class="description-text">
+        {{propertyInfo.description}}
+      </p>
+      <div class="property-specific-detail">
+        <div class="detail-address">
+          <fa-icon class="golden-icon" [icon]="locationIcon"></fa-icon> {{propertyInfo.location}}
+        </div>
+        <div class="highlights">
+          <fa-icon class="golden-icon" [icon]="bedIcon"></fa-icon> {{propertyInfo.highlights.bedsCount}} Bed(s)
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+          <fa-icon class="golden-icon" [icon]="bathIcon"></fa-icon> {{propertyInfo.highlights.bathsCount}} Bath(s)
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+          <fa-icon class="golden-icon" [icon]="roomIcon"></fa-icon> {{propertyInfo.highlights.roomsCount}} Room(s)
+          <mat-divider class="vertical-line" [vertical]="true"></mat-divider>
+          <fa-icon class="golden-icon" [icon]="landIcon"></fa-icon> {{propertyInfo.highlights.landArea}} sq
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="agent-info-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 agent-bio-and-rating">
+        <div class="agent-image">
+          <img [src]="agentData.image" alt="Image of the property agent">
+        </div>
+        <div class="agent-bio">
+          <h4 class="agent-name">{{agentData.name}}</h4>
+          <h4 class="agent-duration">{{agentData.duration}} years on findproperty.com.ng</h4>
+          <div class="agent-rating">
+            <fp-stars [rating]="agentData.rating"></fp-stars>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 connect-with-agent-and-favorite">
+        <button mat-flat-button class="connect-btn">Connect with Agent</button>
+        <button mat-flat-button class="favorite-btn">
+          <fa-icon [icon]="favoriteIcon" class="favorite-icon favorite-not-active"></fa-icon> Add to favorite
+        </button>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<div class="related-properties">
+  <div class="container">
+    <div class="featured-properties-card-container">
+      <h4 class="related-properties-heading">Related apartments by the same agent</h4>
+      <div class="row">
+        <!-- breakpoint is in the component class helps represent the cols in the partners section -->
+        <div class="col-md-6" [ngClass]="(((i+1) % 2 == 0) && breakpoint === 4) ? 'property-column-right' : 'property-column-left'" *ngFor="let property of relatedProperties, let i = index">
+          <fp-property-card [propertyInfo]="property"></fp-property-card>
+        </div>
+      </div>
+    </div>
+    <div class="load-more-container">
+      <button mat-flat-button class="more-properties-btn" (click)="loadMoreRelatedProperties()">Load More Properties</button>
+    </div>
+  </div>
+</div>

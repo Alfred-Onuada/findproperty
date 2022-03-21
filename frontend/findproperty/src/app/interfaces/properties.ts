@@ -1,11 +1,16 @@
 import { IHighlights } from "./highlights";
+import { IHomeCarousel } from "./homecarousel";
 
 export interface IProperties{
+  _id: string,
   title: string,
   description: string,
-  image: string[],
+  images: IHomeCarousel[],
   location: string,
   price: number,
+  date: string,
+  views: number,
   listingType: "Sale" | "Rent",
-  highlights: IHighlights
+  highlights: IHighlights,
+  sellerId: string
 }

@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class formatNumber implements PipeTransform{
   transform(value: number): string {
     if (value < 1000) {
-      return value.toString() + "+";
+      return value.toString();
     } else if (value < 1000000) {
       return Math.floor((value / 1000)).toString() + "K+";
     } else if (value < 1000000000) {

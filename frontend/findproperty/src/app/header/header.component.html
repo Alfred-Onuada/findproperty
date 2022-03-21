@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row navbar-row">
       <div routerLink="/" (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" class="logo-container col-md-4">
-        <img class="logo" [src]="logoLocation" alt="">
+        <img class="logo" [src]="logoLocation" alt="Company's Logo">
       </div>
       <div class="nav-bar-toggler" (click)="toggleNav()">
         <div class="toggler-1" [@hamburgerAnimation-top]="navIsOpen ? 'crossed' : 'flat'"></div>
@@ -31,7 +31,7 @@
           <a class="nav-btn-anchor">About Us</a>
         </button>
         <mat-divider class="nav-divider"></mat-divider>
-        <button mat-flat-button class="nav-btn login-btn"
+        <button mat-button class="nav-btn"
           (click)="setTitle('Sign In | Find-Property')" routerLink="/sign-in">
           <a class="nav-btn-anchor">Sign In</a>
         </button>
@@ -43,4 +43,6 @@
       </div>
     </div>
   </div>
+  <!-- provides a division for the header -->
+  <hr class="blue-header-seperator">
 </header>

@@ -1,0 +1,9 @@
+<div class="big-carousel-section">
+  <div class="container">
+    <img class="carousel-image" [src]="current.image" [alt]="current.title">
+    <div class="controls">
+      <div class="control-dot" *ngFor="let image of slides, let i = index"
+        (click)="jumpToSlide(i)" [ngClass]="currentIndex == i ? 'active-slide' : 'non-active'"></div>
+    </div>
+  </div>
+</div>

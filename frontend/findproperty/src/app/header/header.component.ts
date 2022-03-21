@@ -114,6 +114,8 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleNav(): void {
+    this.isMobile = window.innerWidth < 825;
+    
     this.navIsOpen = this.isMobile ? !this.navIsOpen : this.navIsOpen;
   }
 

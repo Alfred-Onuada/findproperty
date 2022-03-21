@@ -1,0 +1,22 @@
+.rating-stars{
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+.default-stars, .colored-stars{
+  color: #2D9DB2;
+  width: 112px;
+}
+.default-stars{
+  opacity: .6;
+}
+.crop{
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.star-icon{
+  font-size: 18px;
+  margin: 0px 1px;
+}

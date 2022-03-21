@@ -23,7 +23,6 @@ header{
   display: flex;
   place-content: flex-end;
   place-items: center;
-  height: 100%;
 }
 .nav-btn{
   margin: 0px 10px;
@@ -55,6 +54,12 @@ header{
 }
 .nav-divider, .nav-divider-top{
   display: none;
+}
+.blue-header-seperator{
+  color: #2D9DB2;
+  height: 2px;
+  width: 100%;
+  margin: 0px;
 }
 
 /* Tablet CSS */
@@ -143,5 +148,12 @@ header{
   .logo{
     height: 40px;
     width: 150px;
+  }
+}
+
+/* Laptop and screen sizes greater */
+@media only screen and (min-width: 826px) {
+  .nav-items-container{
+    height: 100% !important;
   }
 }

@@ -54,7 +54,9 @@ export class HomePageComponent implements OnInit {
     { 
       title: 'Bravo Apollo Apartments',
       description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      image: ['assets/img/house1.png'],
+      images: [
+        { image: 'assets/img/house1.png', title: '' }
+      ],
       highlights: {
         bedsCount: 4,
         bathsCount: 5,
@@ -63,12 +65,18 @@ export class HomePageComponent implements OnInit {
       },
       listingType: 'Sale',
       location: '779 6th Ave New York, NY 120400',
-      price: 55000
+      price: 55000,
+      views: 0,
+      date: '',
+      _id: '',
+      sellerId: ''
     },
     { 
       title: 'Bravo Apollo Apartments',
       description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      image: ['assets/img/house2.png'],
+      images: [
+        { image: 'assets/img/house2.png', title: '' }
+      ],
       highlights: {
         bedsCount: 4,
         bathsCount: 5,
@@ -77,12 +85,18 @@ export class HomePageComponent implements OnInit {
       },
       listingType: 'Sale',
       location: '779 6th Ave New York, NY 120400',
-      price: 55000
+      price: 55000,
+      views: 0,
+      date: '',
+      _id: '',
+      sellerId: ''
     },
     { 
       title: 'Bravo Apollo Apartments',
       description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      image: ['assets/img/house3.png'],
+      images: [
+        { image: 'assets/img/house3.png', title: '' }
+      ],
       highlights: {
         bedsCount: 6,
         bathsCount: 2,
@@ -91,12 +105,18 @@ export class HomePageComponent implements OnInit {
       },
       listingType: 'Sale',
       location: '779 6th Ave New York, NY 120400',
-      price: 140000
+      price: 140000,
+      views: 0,
+      date: '',
+      _id: '',
+      sellerId: ''
     },
     { 
       title: 'Bravo Apollo Apartments',
       description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      image: ['assets/img/house4.png'],
+      images: [
+        { image: 'assets/img/house4.png', title: '' }
+      ],
       highlights: {
         bedsCount: 7,
         bathsCount: 7,
@@ -105,7 +125,11 @@ export class HomePageComponent implements OnInit {
       },
       listingType: 'Rent',
       location: '779 6th Ave New York, NY 120400',
-      price: 27000
+      price: 27000,
+      views: 0,
+      date: '',
+      _id: '',
+      sellerId: ''
     }
   ]
 

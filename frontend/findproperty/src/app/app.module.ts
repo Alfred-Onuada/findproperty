@@ -19,6 +19,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { PropertyPageComponent } from './property-page/property-page.component';
+import { StarsComponent } from './stars/stars.component';
+import { BigCarouselComponent } from './big-carousel/big-carousel.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HomePageComponent } from './home-page/home-page.component';
     SignUpComponent,
     SignInComponent,
     PageNotFoundComponent,
-    HomePageComponent
+    HomePageComponent,
+    PropertyPageComponent,
+    StarsComponent,
+    BigCarouselComponent
   ],
   imports: [
     BrowserModule,
