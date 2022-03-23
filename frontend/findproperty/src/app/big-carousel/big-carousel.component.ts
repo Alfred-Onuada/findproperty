@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { IHomeCarousel } from '../interfaces/homecarousel';
 
 @Component({
@@ -6,7 +6,7 @@ import { IHomeCarousel } from '../interfaces/homecarousel';
   templateUrl: './big-carousel.component.html',
   styleUrls: ['./big-carousel.component.css']
 })
-export class BigCarouselComponent implements OnInit {
+export class BigCarouselComponent implements OnInit, OnChanges {
 
   @Input() slides!: IHomeCarousel[]; // it's never going to be a string[] but the interface kind of specifies that
 
@@ -19,6 +19,12 @@ export class BigCarouselComponent implements OnInit {
 
   ngOnInit(): void {
     this.current = this.slides[0];
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // the current & currentSlide are not tied to the parent component so they wont change automatically
+    this.current = this.slides[0];
+    this.currentIndex = 0;
   }
 
   jumpToSlide(index: number) {

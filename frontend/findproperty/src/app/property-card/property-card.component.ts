@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBath, faBed, faRobot, faRulerHorizontal, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +19,8 @@ export class PropertyCardComponent implements OnInit {
   bathIcon: IconProp = faBath;
   roomIcon: IconProp = faBed;
   landIcon: IconProp = faRulerHorizontal;
+
+  goToIcon: IconProp = faBath;
 
   constructor(
     private titleService: Title

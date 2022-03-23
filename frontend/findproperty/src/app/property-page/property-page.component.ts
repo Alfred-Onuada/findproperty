@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAddressBook, faBath, faBed, faEye, faHeart, faRulerHorizontal, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 import { IAgent } from '../interfaces/agent';
 import { IProperties } from '../interfaces/properties';
+import { PropertyService } from '../services/properties.service';
+import { SellerService } from '../services/sellers.service';
 
 @Component({
   selector: 'fp-property-page',
   templateUrl: './property-page.component.html',
   styleUrls: ['./property-page.component.css']
 })
-export class PropertyPageComponent implements OnInit {
+export class PropertyPageComponent implements OnInit, OnDestroy {
+
+  relatedPropertiesSub$!: Subscription;
+  agentSub$!: Subscription;
+  propertyInfoSub$!: Subscription;
+  routeSub$!: Subscription;
+
+  // hard errors are actual error, like backend or frontend error
+  hardError: Object = {};
+  // soft errors are actions that will produce no effect like requesting for more properties than you have
+  softError: Object = {};
+
+  sellerId: string = '';
+  propertyId: string = '';
 
   // cols dependent on breakpoint
   breakpoint:number = window.innerWidth <= 480 ? 2 : 4;
@@ -28,135 +45,79 @@ export class PropertyPageComponent implements OnInit {
   landIcon: IconProp = faRulerHorizontal;
 
   // agent data
-  agentData: IAgent = {
-    _id: '',
-    image: 'assets/img/agent-image.png',
-    name: 'Jolomi Olajide',
-    duration: 2,
-    rating: 3.5
-  }
+  agentData: IAgent | undefined;
 
   // property images will be gotten from db
-  propertyInfo: IProperties = {
-    _id: '',
-    title: 'Bravo Apollo Apartments',
-    date: 'Posted 5 days ago',
-    views: 502,
-    images: [
-      { image: 'assets/img/house1.png', title: '' },
-      { image: 'assets/img/house3.png', title: '' },
-      { image: 'assets/img/house2.png', title: '' },
-      { image: 'assets/img/house4.png', title: '' },
-      { image: 'assets/img/house1.png', title: '' },
-      { image: 'assets/img/house2.png', title: '' },
-      { image: 'assets/img/house4.png', title: '' },
-      { image: 'assets/img/house3.png', title: '' },
-    ],
-    description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected. There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-    location: '779 6th Ave New York, NY 120400',
-    price: 425000,
-    listingType: 'Sale',
-    highlights: {
-      bedsCount: 4,
-      bathsCount: 5,
-      landArea: 4000,
-      roomsCount: 5
-    },
-    sellerId: ''
-  }
+  propertyInfo: IProperties | undefined;
 
   // for properties card same across entire app
   // on click of load more the properties will simply be added to this list change detection will do it's work
-  relatedProperties: IProperties[] = [
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house1.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 4,
-        bathsCount: 5,
-        landArea: 4000,
-        roomsCount: 5
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 55000,
-      date: '',
-      views: 0,
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house2.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 4,
-        bathsCount: 5,
-        landArea: 4000,
-        roomsCount: 5
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 55000,
-      date: '',
-      views: 0,
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house3.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 6,
-        bathsCount: 2,
-        landArea: 9000,
-        roomsCount: 9
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 140000,
-      date: '',
-      views: 0,
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house4.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 7,
-        bathsCount: 7,
-        landArea: 2300,
-        roomsCount: 5
-      },
-      listingType: 'Rent',
-      location: '779 6th Ave New York, NY 120400',
-      price: 27000,
-      date: '',
-      views: 0,
-      _id: '',
-      sellerId: ''
-    }
-  ]
+  relatedProperties: IProperties[] = []
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private propertyService: PropertyService,
+    private sellerService: SellerService
+  ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.sellerId = params['sellerId'] || '';
+      this.propertyId = params['propertyId'] || '';
+  
+      // this will never be null, because if it is the route will automatically match the 404 page
+      if (this.sellerId == '' || this.propertyId == '') {
+        this.hardError = {
+          status: 400,
+          message: "Looks like the requested property doesn't exist please confirm you have the correct url"
+        }
+  
+        return;
+      }
+  
+      this.relatedPropertiesSub$ = this.propertyService.getPropertiesBySellerId(this.sellerId, this.propertyId, 4).subscribe({
+        next: properties => {
+          this.relatedProperties = properties;
+        },
+        error: error => this.hardError = error,
+      })
+  
+      this.propertyInfoSub$ = this.propertyService.getPropertyById(this.propertyId).subscribe({
+        next: properties => {
+          this.propertyInfo = properties[0];
+        },
+        error: error => this.hardError = error,
+      })
+  
+      this.agentSub$ = this.sellerService.getSellerById(this.sellerId).subscribe({
+        next: agents => {
+          this.agentData = agents[0];
+        },
+        error: error => this.hardError = error,
+      })
+    })
+
+  }
+
+  ngOnDestroy(): void {
+    this.relatedPropertiesSub$.unsubscribe();
+    this.propertyInfoSub$.unsubscribe();
+    this.agentSub$.unsubscribe();
   }
 
   loadMoreRelatedProperties() : void {
-    this.relatedProperties.push(...this.relatedProperties);
+    // clear the previous subscription
+    this.relatedPropertiesSub$.unsubscribe();
+
+    this.relatedPropertiesSub$ = this.propertyService.getPropertiesBySellerId(this.sellerId, this.propertyId, 4, this.relatedProperties.length).subscribe({
+      next: properties => {
+        if (properties.length == 0) {
+          return this.softError = { status: 400, message: 'No more properties to display, seems like that was the last one'}
+        }
+        return this.relatedProperties.push(...properties);
+      },
+      error: error => this.hardError = error
+    })
   }
 
 }

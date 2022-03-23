@@ -51,6 +51,7 @@ header{
 }
 .nav-bar-toggler{
   display: none;
+  cursor: pointer;
 }
 .nav-divider, .nav-divider-top{
   display: none;

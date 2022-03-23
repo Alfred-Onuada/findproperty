@@ -24,6 +24,11 @@
   min-width: 135px;
   width: fit-content;
 }
+.property-link{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 .listing-type{
   padding: 0px 15px;
   width: 100%;
@@ -64,6 +69,10 @@
   font-size: 14px;
   font-weight: 400;
   margin: 0px 0px 10px 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .property-location-container{
   display: flex;
@@ -112,13 +121,16 @@
 
 @media only screen and (max-width: 480px) {
   .property-card{
-    height: 330px;
+    height: 300px;
     width: 100%;
     box-shadow: 0px 10px 30px rgba(0, 115, 225, 0.06);
     background: #FFFF;
     border-radius: 4px;
     border: 0px;
     margin: 20px 0px;
+  }
+  .property-card-img{
+    height: 190px;
   }
   .property-price-container{
     bottom: 10px;
@@ -138,5 +150,11 @@
   }
   .property-price > h4{
     font-size: 18px;
+  }
+  .property-description{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

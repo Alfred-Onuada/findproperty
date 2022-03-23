@@ -1,4 +1,5 @@
-<div class="property-description-section">
+<!-- the ngIf makes sure this doesn't display if it's empty -->
+<div class="property-description-section" *ngIf="propertyInfo"> 
   <div class="container">
     <div class="images-carousel">
       <fp-big-carousel [slides]="propertyInfo.images"></fp-big-carousel>
@@ -10,7 +11,7 @@
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 description-date-and-views">
           <div class="description-date">
-            <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date}}
+            <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date | date}}
           </div>
           <div class="description-views">
             <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views | formatNumber}} views
@@ -38,7 +39,8 @@
   </div>
 </div>
 
-<div class="agent-info-section">
+<!-- the ngIf makes sure this doesn't display if it's empty -->
+<div class="agent-info-section" *ngIf="agentData">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6 agent-bio-and-rating">

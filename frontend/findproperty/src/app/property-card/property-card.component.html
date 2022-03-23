@@ -6,8 +6,11 @@
         <h4>For {{propertyInfo.listingType}}</h4>
       </div>
       <div class="property-price">
-        <h4>{{propertyInfo.price | currency:"NGN":"symbol"}}</h4>
+        <h4>{{propertyInfo.price | currency:'NGN':'symbol'}}</h4>
       </div>
+    </div>
+    <div class="property-link" [routerLink]="['/property', propertyInfo._id, propertyInfo.sellerId]">
+      <fa-icon [icon]="goToIcon"></fa-icon>
     </div>
   </div>
   <div class="property-card-content">

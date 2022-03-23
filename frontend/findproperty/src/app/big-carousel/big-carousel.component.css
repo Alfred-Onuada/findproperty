@@ -28,6 +28,6 @@
 /* Mobile Css */
 @media only screen and (max-width: 480px) {
   .carousel-image{
-    height: 400px;
+    height: 300px;
   }
 }

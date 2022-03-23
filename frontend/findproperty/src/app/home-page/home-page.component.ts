@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { faHandHoldingUsd, faHome, faSearchLocation, faTruckMoving } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 import { IFeatures } from '../interfaces/features';
 import { IPartners } from '../interfaces/partners';
 import { IProperties } from '../interfaces/properties';
 import { IReviews } from '../interfaces/reviews';
 import { IStats } from '../interfaces/stats';
+import { PropertyService } from '../services/properties.service';
 
 @Component({
   selector: 'fp-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
 
-  constructor(
-    private titleService: Title
-  ) { }
+  // holds the subscription to get required data
+  sub$!: Subscription;
+
+  // hard errors are actual error, like backend or frontend error
+  hardError: Object = {};
+  // soft errors are actions that will produce no effect like requesting for more properties than you have
+  softError: Object = {};
 
   title = 'findproperty';
   topImage = 'assets/img/top-image.png';
@@ -48,90 +54,7 @@ export class HomePageComponent implements OnInit {
     { icon: faTruckMoving, title: 'Faster Services', description: 'There are many variations of passages of Lorem Ipsum available but the majority suffered.' },
   ] 
 
-  // for properties card same across entire app
-  // on click of load more the properties will simply be added to this list change detection will do it's work
-  featuredProperties: IProperties[] = [
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house1.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 4,
-        bathsCount: 5,
-        landArea: 4000,
-        roomsCount: 5
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 55000,
-      views: 0,
-      date: '',
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house2.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 4,
-        bathsCount: 5,
-        landArea: 4000,
-        roomsCount: 5
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 55000,
-      views: 0,
-      date: '',
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house3.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 6,
-        bathsCount: 2,
-        landArea: 9000,
-        roomsCount: 9
-      },
-      listingType: 'Sale',
-      location: '779 6th Ave New York, NY 120400',
-      price: 140000,
-      views: 0,
-      date: '',
-      _id: '',
-      sellerId: ''
-    },
-    { 
-      title: 'Bravo Apollo Apartments',
-      description: 'There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form injected.',
-      images: [
-        { image: 'assets/img/house4.png', title: '' }
-      ],
-      highlights: {
-        bedsCount: 7,
-        bathsCount: 7,
-        landArea: 2300,
-        roomsCount: 5
-      },
-      listingType: 'Rent',
-      location: '779 6th Ave New York, NY 120400',
-      price: 27000,
-      views: 0,
-      date: '',
-      _id: '',
-      sellerId: ''
-    }
-  ]
+  featuredProperties: IProperties[] = []
 
   // for the carousel
   customerReviews: IReviews[] = [
@@ -161,6 +84,24 @@ export class HomePageComponent implements OnInit {
     }
   ]
 
+  constructor(
+    private titleService: Title,
+    private propertyService: PropertyService
+  ) { }
+
+  ngOnInit(): void {
+    this.sub$ = this.propertyService.getProperties(4).subscribe({
+      next: properties => {
+        this.featuredProperties = properties
+      },
+      error: error => this.hardError = error
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.sub$.unsubscribe()
+  }
+
   // this method exposes a global function used for setting the title
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
@@ -171,10 +112,18 @@ export class HomePageComponent implements OnInit {
   }
 
   loadMore() : void {
-    this.featuredProperties.push(...this.featuredProperties);
-  }
+    // clear the previous subscription
+    this.sub$.unsubscribe();
 
-  ngOnInit(): void {
+    this.sub$ = this.propertyService.getProperties(4, this.featuredProperties.length).subscribe({
+      next: properties => {
+        if (properties.length == 0) {
+          return this.softError = { status: 400, message: 'No more properties to display, seems like that was the last one'}
+        }
+        return this.featuredProperties.push(...properties);
+      },
+      error: error => this.hardError = error
+    })
   }
 
 }

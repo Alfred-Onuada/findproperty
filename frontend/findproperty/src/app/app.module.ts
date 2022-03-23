@@ -22,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PropertyPageComponent } from './property-page/property-page.component';
 import { StarsComponent } from './stars/stars.component';
 import { BigCarouselComponent } from './big-carousel/big-carousel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { BigCarouselComponent } from './big-carousel/big-carousel.component';
     MatListModule,
     MatButtonModule,
     StickyNavModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
   ],
   providers: [
     Title
