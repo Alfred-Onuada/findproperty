@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faBath, faBed, faRobot, faRulerHorizontal, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
+import { faBath, faBed, faLink, faRulerHorizontal, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 import { IProperties } from '../interfaces/properties';
 
 @Component({
@@ -20,7 +20,7 @@ export class PropertyCardComponent implements OnInit {
   roomIcon: IconProp = faBed;
   landIcon: IconProp = faRulerHorizontal;
 
-  goToIcon: IconProp = faBath;
+  goToIcon: IconProp = faLink;
 
   constructor(
     private titleService: Title
