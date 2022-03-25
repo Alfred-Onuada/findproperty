@@ -20,8 +20,6 @@ export class PropertyCardComponent implements OnInit {
   roomIcon: IconProp = faBed;
   landIcon: IconProp = faRulerHorizontal;
 
-  goToIcon: IconProp = faLink;
-
   constructor(
     private titleService: Title
   ) { }
