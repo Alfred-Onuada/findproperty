@@ -98,6 +98,14 @@ export class HeaderComponent implements OnInit {
   logoLocation: string = 'assets/img/logo.png';
   navIsOpen: boolean = false;
   isMobile: boolean = window.innerWidth < 825;
+
+  // some validation of the jwt from your cookies will help me determine if your logged in
+  isLoggedIn: boolean = true;
+
+  // details gotten from the service
+  profileDisplayName: string = 'Jolomi Olajide';
+  profileImg: string = 'assets/img/agent4.png';
+  profileImgAlt: string = `Image of ${this.profileDisplayName}`;
   
   constructor(
     private titleService: Title

@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { IHomeCarousel } from '../interfaces/homecarousel';
 
 @Component({
@@ -13,6 +15,9 @@ export class BigCarouselComponent implements OnInit, OnChanges {
   // holds info about the current slide
   current: IHomeCarousel = { image: '', title: '' };
   currentIndex: number = 0;
+
+  rightArrow: IconProp = faAngleRight;
+  leftArrow: IconProp = faAngleLeft;
 
   constructor() { 
   }
@@ -30,6 +35,16 @@ export class BigCarouselComponent implements OnInit, OnChanges {
   jumpToSlide(index: number) {
     this.current = this.slides[index];
     this.currentIndex = index;
+  }
+
+  moveRight(): void {
+    this.currentIndex++;
+    this.current = this.slides[this.currentIndex];
+  }
+
+  moveLeft(): void {
+    this.currentIndex--;
+    this.current = this.slides[this.currentIndex];
   }
 
 }

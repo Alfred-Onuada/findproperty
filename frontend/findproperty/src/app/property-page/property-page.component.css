@@ -20,7 +20,8 @@
 .description-text{
   text-align: justify;
   font-weight: normal;
-  font-size: 15.5px;
+  font-size: 17px;
+  line-height: 25px;
 }
 .property-specific-detail{
   display: flex;
@@ -38,13 +39,11 @@
   margin-right: 5px;
 }
 .highlights, .detail-address{
-  font-size: 14px;
+  font-size: 16px;
 }
 .detail-address{
   margin-right: 30px;
 }
-
-
 .agent-info-section{
   margin: 30px 0px;
 }

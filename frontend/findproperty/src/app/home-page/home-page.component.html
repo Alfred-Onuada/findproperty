@@ -59,7 +59,7 @@
               <fa-icon [icon]="stat.icon"></fa-icon>
             </div>
             <div>
-              <h4 class="stat-quantity">{{stat.count | formatNumber}}</h4>
+              <h4 class="stat-quantity">{{stat.count | number}}</h4>
               <h4 class="stat-name">{{stat.name}}</h4>
             </div>
           </div>
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="load-more-container">
-      <button mat-flat-button class="more-properties-btn" (click)="loadMore()">Load More Properties</button>
+      <button mat-flat-button class="more-properties-btn" (click)="loadMore()">See More Properties</button>
     </div>
   </div>
 </div>

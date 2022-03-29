@@ -14,7 +14,7 @@
             <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date | date}}
           </div>
           <div class="description-views">
-            <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views | formatNumber}} views
+            <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views}} views
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="load-more-container">
-      <button mat-flat-button class="more-properties-btn" (click)="loadMoreRelatedProperties()">Load More Properties</button>
+      <button mat-flat-button class="more-properties-btn" (click)="loadMoreRelatedProperties()">See More Properties</button>
     </div>
   </div>
 </div>

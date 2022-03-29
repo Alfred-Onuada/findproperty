@@ -1,6 +1,14 @@
 <div class="big-carousel-section">
   <div class="container">
-    <img class="carousel-image" [src]="current.image" [alt]="current.title">
+    <div class="arrow-controls-and-image">
+      <div class="left-arrow" (click)="moveLeft()">
+        <fa-icon [icon]="leftArrow" class="left-arrow-icon"></fa-icon>
+      </div>
+      <img class="carousel-image" [src]="current.image" [alt]="current.title">
+      <div class="right-arrow" (click)="moveRight()">
+        <fa-icon [icon]="rightArrow" class="right-arrow-icon"></fa-icon>
+      </div>
+    </div>
     <div class="controls">
       <div class="control-dot" *ngFor="let image of slides, let i = index"
         (click)="jumpToSlide(i)" [ngClass]="currentIndex == i ? 'active-slide' : 'non-active'"></div>

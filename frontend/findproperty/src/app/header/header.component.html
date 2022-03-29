@@ -4,12 +4,14 @@
       <div routerLink="/" (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" class="logo-container col-md-4">
         <img class="logo" [src]="logoLocation" alt="Company's Logo">
       </div>
-      <div class="nav-bar-toggler" (click)="toggleNav()">
+      <div class="nav-bar-toggler" (click)="toggleNav()" 
+        *ngIf="isLoggedIn == false">
         <div class="toggler-1" [@hamburgerAnimation-top]="navIsOpen ? 'crossed' : 'flat'"></div>
         <div class="toggler-2" [@hamburgerAnimation-mid]="navIsOpen ? 'hidden' : 'visible'"></div>
         <div class="toggler-3" [@hamburgerAnimation-bottom]="navIsOpen ? 'crossed' : 'flat'"></div>
       </div>
-      <div class="col-md-8 nav-items-container" [@responsiveNav]="navIsOpen ? 'open' : [ isMobile ? 'closed' : '' ]">
+      <div class="col-md-8 nav-items-container" [@responsiveNav]="navIsOpen ? 'open' : [ isMobile ? 'closed' : '' ]"
+        *ngIf="isLoggedIn == false">
         <mat-divider class="nav-divider-top"></mat-divider>
         <button [disableRipple]="true" mat-button class="nav-btn"
           (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" routerLink="/">
@@ -40,6 +42,15 @@
           (click)="setTitle('Sign Up | Find-Property')" routerLink="/sign-up">
           <a class="nav-btn-anchor">Sign Up</a>
         </button>
+      </div>
+      <div class="col-md-8 nav-profile-container" *ngIf="isLoggedIn">
+        <mat-divider [vertical]="true" class="profile-divider"></mat-divider>
+        <div class="profile-avatar-and-name">
+          <h4 class="profile-name">{{ profileDisplayName }}</h4>
+          <div class="profile-img-container">
+            <img [src]="profileImg" [alt]="profileImgAlt" class="profile-img">
+          </div>
+        </div>
       </div>
     </div>
   </div>

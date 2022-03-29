@@ -73,7 +73,7 @@
   font-weight: 600;
 }
 .property-description{
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   margin: 0px 0px 10px 0px;
   display: -webkit-box;
@@ -92,7 +92,7 @@
 }
 .property-location{
   margin: 0px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .property-highlights{
   height: 40px;
@@ -104,7 +104,7 @@
 }
 .property-highlights-item{
   margin: 0px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
 }
 .vertical-line{

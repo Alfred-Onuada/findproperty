@@ -24,6 +24,41 @@
 .non-active{
   background-color: #D3DEE8;
 }
+.arrow-controls-and-image{
+  position: relative;
+  overflow: hidden;
+}
+.arrow-controls-and-image:hover .left-arrow{
+  left: 0px;
+}
+.arrow-controls-and-image:hover .right-arrow{
+  right: 0px;
+}
+.left-arrow, .right-arrow{
+  position: absolute;
+  top: 0px;
+  width: 75px;
+  height: 100%;
+  background-color: black;
+  opacity: .8;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.left-arrow{
+  left: -75px;
+  transition: .3s all;
+}
+.right-arrow{
+  right: -75px;
+  transition: .3s all;
+}
+.right-arrow-icon, .left-arrow-icon{
+  color: #FFFF;
+  font-size: 50px;
+  opacity: 0.6;
+}
+
 
 /* Mobile Css */
 @media only screen and (max-width: 480px) {
