@@ -1,6 +1,8 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'fp-header',
@@ -101,11 +103,15 @@ export class HeaderComponent implements OnInit {
 
   // some validation of the jwt from your cookies will help me determine if your logged in
   isLoggedIn: boolean = true;
+  thereIsNotification: boolean = true;
 
   // details gotten from the service
   profileDisplayName: string = 'Jolomi Olajide';
-  profileImg: string = 'assets/img/agent4.png';
+  profileImg: string = 'assets/img/agent1.png';
   profileImgAlt: string = `Image of ${this.profileDisplayName}`;
+
+  searchIcon: IconProp = faSearch;
+  notificationIcon: IconProp = faBell;
   
   constructor(
     private titleService: Title

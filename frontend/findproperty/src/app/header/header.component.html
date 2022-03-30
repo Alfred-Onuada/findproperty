@@ -44,6 +44,11 @@
         </button>
       </div>
       <div class="col-md-8 nav-profile-container" *ngIf="isLoggedIn">
+        <fa-icon [icon]="searchIcon" class="search-icon"></fa-icon>
+        <div class="notification-container">
+          <fa-icon [icon]="notificationIcon" class="notification-icon"></fa-icon>
+          <div class="notification-dot" *ngIf="thereIsNotification"></div>
+        </div>
         <mat-divider [vertical]="true" class="profile-divider"></mat-divider>
         <div class="profile-avatar-and-name">
           <h4 class="profile-name">{{ profileDisplayName }}</h4>

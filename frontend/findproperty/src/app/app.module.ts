@@ -23,6 +23,7 @@ import { PropertyPageComponent } from './property-page/property-page.component';
 import { StarsComponent } from './stars/stars.component';
 import { BigCarouselComponent } from './big-carousel/big-carousel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     PropertyPageComponent,
     StarsComponent,
-    BigCarouselComponent
+    BigCarouselComponent,
+    ClientDashboardComponent
   ],
   imports: [
     BrowserModule,

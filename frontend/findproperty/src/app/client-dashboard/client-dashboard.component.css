@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+.client-dashboard-section{
+  height: 100%;
+  width: 100%;
+}
+.dashboard-row{
+  max-width: 100%;
+  display: flex;
+}
+.side-navigation{
+  height: 100vh;
+  background-color: #14505B;
+  padding: 50px 0px 20px 0px;
+}
+.section-container{
+  height: 100vh;
+  padding: 30px 0px 20px 0px;
+}
+.side-navigation-item{
+  height: 60px;
+  display: flex;
+  padding-left: 30px;
+  place-items: center;
+  color: #929BA8;
+}
+.side-navigation-item:hover{
+  color: #FFFF;
+  background-color: #3c757f;
+}
+.side-nav-section-divider{
+  margin: 20px 0px;
+  background: #DFE0EB;
+}
+.side-nav-icon{
+  margin-right: 15px;
+}
+.side-nav-text, .side-nav-icon{
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.active-section{
+  border-left: 3px solid #FFFF;
+}
+.specific-dashboard-section{
+  width: 100%;
+  height: 100%;
+  padding: 0px 0px 0px 10px;
+}
+.applied-section{
+  border: 1.5px solid #DFE0EB;
+  border-radius: 8px;
+  height: 95vh;
+  padding: 15px 0px 0px 0px;
+}
+.applied-bottom{
+  display: flex;
+  place-content: flex-end;
+  place-items: center;
+  height: 60px;
+  padding: 0px 30px;
+}
+.properties-per-page{
+  margin: 0px 100px;
+}
+.actions-button-text{
+  margin: 0px;
+  font-size: 14px;
+  color: #9FA2B4;
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+}
+.page-number-and-property-count{
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+.page-control{
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.page-control-icon{
+  color: #9FA2B4;
+  font-size: 18px;
+}
+.applied-top{
+  display: flex;
+  height: 60px;
+  padding: 0px 30px;
+  place-items: center;
+  justify-content: space-between;
+}
+.sort-and-filter{
+  display: flex;
+}
+.sort-or-filter-container{
+  display: flex;
+  place-items: center;
+  margin-left: 25px;
+}
+.actions-button-text-top{
+  margin: 0px;
+  font-size: 14px;
+  color: #4B506D;
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  margin-left: 10px;
+}
+.top-icon{
+  color: #9FA2B4;
+  font-size: 14px;
+}
+.all-tickets-text{
+  margin: 0px;
+  font-size: 20px;
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.table-divider{
+ background: #DFE0EB;
+}

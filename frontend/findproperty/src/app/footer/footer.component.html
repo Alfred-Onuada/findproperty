@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<footer>
+<footer *ngIf="pageNeedsFooter$ | async">
   <div class="container" [ngClass]="(isRegistered == false && (currentRouteIsHomePage$ | async)) ? 'footer-padding-large' : 'footer-padding-small'">
     <div class="row">
       <div class="col-md-4 col-sm-12">

@@ -1,0 +1,90 @@
+<div class="client-dashboard-section">
+  <div class="dashboard-row">
+    <div class="col-md-3 side-navigation">
+      <div class="side-navigation-item" [ngClass]="activeSection == 'find properties' ? 'active-section' : ''"
+        (click)="switchSection('find properties')">
+        <fa-icon [icon]="searchIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Find Properties</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'already applied' ? 'active-section' : ''"
+        (click)="switchSection('already applied')">
+        <fa-icon [icon]="appliedIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Already applied</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'conversations' ? 'active-section' : ''"
+        (click)="switchSection('conversations')">
+        <fa-icon [icon]="conversationsIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Conversations</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'purchased properties' ? 'active-section' : ''"
+        (click)="switchSection('purchased properties')">
+        <fa-icon [icon]="purchaseIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Purchased Properties</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'rented properties' ? 'active-section' : ''"
+        (click)="switchSection('rented properties')">
+        <fa-icon [icon]="rentedIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Rented Properties</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'favorites' ? 'active-section' : ''"
+        (click)="switchSection('favorites')">
+        <fa-icon [icon]="favoritesIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Favorites</div>
+      </div>
+      <mat-divider class="side-nav-section-divider"></mat-divider>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'settings' ? 'active-section' : ''"
+        (click)="switchSection('settings')">
+        <fa-icon [icon]="settingsIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Settings</div>
+      </div>
+      <div class="side-navigation-item" [ngClass]="activeSection == 'logout' ? 'active-section' : ''"
+        (click)="switchSection('logout')">
+        <fa-icon [icon]="logoutIcon" class="side-nav-icon"></fa-icon>
+        <div class="side-nav-text">Logout</div>
+      </div>
+    </div>
+
+    <div class="col-md-9 section-container">
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == 'already applied'">
+        <div class="applied-section">
+          <div class="applied-top">
+            <h4 class="all-tickets-text">All Tickets</h4>
+            <div class="sort-and-filter">
+              <div class="sort-or-filter-container">
+                <fa-icon [icon]="sortIcon" class="top-icon"></fa-icon>
+                <h4 class="actions-button-text-top">Sort</h4>
+              </div>
+              <div class="sort-or-filter-container">
+                <fa-icon [icon]="filterIcon" class="top-icon"></fa-icon>
+                <h4 class="actions-button-text-top">Filter</h4>
+              </div>
+            </div>
+          </div>
+          <div class="applied-content"></div>
+          <mat-divider class="table-divider"></mat-divider>
+          <div class="applied-bottom">
+            <div class="properties-per-page">
+              <h4 class="actions-button-text">Rows per page:</h4>
+            </div>
+            <div class="page-number-and-property-count">
+              <h4 class="actions-button-text">
+                {{propertyIndexStart}}-{{propertyIndexEnd}} of {{propertyCount}}
+              </h4>
+              <div class="page-control">
+                <fa-icon [icon]="prevPageIcon" class="page-control-icon"></fa-icon>
+                <fa-icon [icon]="nextPageIcon" class="page-control-icon"></fa-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+    </div>
+  </div>
+</div>

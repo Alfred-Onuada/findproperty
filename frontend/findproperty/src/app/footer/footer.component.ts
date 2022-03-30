@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { faFacebookF, faInstagram, faPinterestP, faTelegramPlane, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faCopyright, faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -15,6 +15,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+
+  // controls display of footer, not all pages need it
+  pageNeedsFooter$: Observable<boolean> = of(true);
+  pagesWithoutFooter: string[] = [
+    '/dashboard',
+  ]
 
   // go to top icon
   arrowTop = faAngleUp;
@@ -79,14 +85,21 @@ export class FooterComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this subscribes to the router navigation events and changes the value of the currentRoute each time
-    // the map will return either true or false depending on what is returned by filter
-    this.currentRouteIsHomePage$ = this.router.events.pipe(
+
+    // checks if a page needs the footer and decides if to show it or not
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.router.url),
+      map(url => this.pagesWithoutFooter.includes(url) == false),
+      map(isInPagesWithFooter => isInPagesWithFooter ? true : false)
+    ).subscribe(pageNeedsFooter => this.pageNeedsFooter$ = of(pageNeedsFooter));
+
+    // checks if the current route is home page and shows permits the subscribe to email box
+    this.router.events.pipe(
       filter((e) => e instanceof NavigationEnd),
       map((e) => (e instanceof NavigationEnd && e.url === '/'))
-    )
+    ).subscribe(currentRouteIsHomePage => this.currentRouteIsHomePage$ = of(currentRouteIsHomePage))
 
-    this.currentRouteIsHomePage$.subscribe()
   }
 
 }
