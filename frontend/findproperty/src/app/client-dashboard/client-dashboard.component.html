@@ -61,8 +61,59 @@
               </div>
             </div>
           </div>
-          <div class="applied-content"></div>
-          <mat-divider class="table-divider"></mat-divider>
+          <div class="applied-content">
+            <div class="applied-header">
+              <div class="col-35-percent">
+                <h4 class="table-heading">Property</h4>
+              </div>
+              <div class="col-15-percent">
+                <h4 class="table-heading">Price</h4>
+              </div>
+              <div class="col-15-percent">
+                <h4 class="table-heading">Agent Name</h4>
+              </div>
+              <div class="col-15-percent">
+                <h4 class="table-heading">Active Since</h4>
+              </div>
+              <div class="col-15-percent">
+                <h4 class="table-heading">Delete</h4>
+              </div>
+              <div class="col-5-percent"></div>
+            </div>
+            <mat-divider class="table-divider"></mat-divider>
+            <div class="mock-table-row" *ngFor="let property of appliedProperties">
+              <div class="row-contents">
+                <div class="col-35-percent property-img-and-details">
+                  <img src="{{property.image}}" class="property-table-img">
+                  <div>
+                    <h4 class="table-data-text">{{property.name}}</h4>
+                    <h4 class="table-data-sub-text">{{property.lastUpdate}}</h4>
+                  </div>
+                </div>
+                <div class="col-15-percent">
+                  <div class="price-inner-div">
+                    <h4 class="table-data-text price-colored">₦{{property.price | number}}</h4>
+                  </div>
+                </div>
+                <div class="col-15-percent">
+                  <div>
+                    <h4 class="table-data-text">{{property.agentName}}</h4>
+                    <h4 class="table-data-sub-text">{{property.propertyUploadtime | date}}</h4>
+                  </div>
+                </div>
+                <div class="col-15-percent">
+                  <h4 class="table-data-text">{{property.activeSince | date}}</h4>
+                </div>
+                <div class="col-15-percent">
+                  <button mat-button class="delete-record-button">Delete</button>
+                </div>
+                <div class="col-5-percent">
+                  <fa-icon [icon]="moreVerticalIcon" class="more-vertical-icon"></fa-icon>
+                </div>
+              </div>
+              <mat-divider class="table-divider"></mat-divider>
+            </div>
+          </div>
           <div class="applied-bottom">
             <div class="properties-per-page">
               <h4 class="actions-button-text">Rows per page:</h4>

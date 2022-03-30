@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faAngleLeft, faAngleRight, faBookmark, faCog, faCommentDots, faDollarSign, faFilter, faHandHoldingUsd, faHeart, faSearch, faSignOutAlt, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faBookmark, faCog, faCommentDots, faDollarSign, faEllipsisV, faFilter, faHandHoldingUsd, faHeart, faSearch, faSignOutAlt, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'fp-client-dashboard',
@@ -24,13 +24,117 @@ export class ClientDashboardComponent implements OnInit {
   nextPageIcon: IconProp = faAngleRight;
   filterIcon: IconProp = faFilter;
   sortIcon: IconProp = faSortAmountUpAlt;
+  moreVerticalIcon: IconProp = faEllipsisV;
 
   activeSection: string = 'already applied';
 
+  appliedProperties: any[] = [
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+    {
+      id: 'test1',
+      image: 'assets/img/house9.png',
+      name: 'Lekki Phase 2 apartment',
+      price: 8300000,
+      agentName: 'Charles Deleany',
+      propertyUploadtime: Date.now(),
+      activeSince: Date.now(),
+      lastUpdate: '4 days ago'
+    },
+  ]
+
   propertyIndexStart: number = 1;
-  propertyIndexEnd: number = 8;
+  propertyIndexEnd: number = 10;
   propertyCount: number = 3239;
-  propertyPerPage: number = 8;
+  propertyPerPage: number = 10;
 
   constructor() { }
 

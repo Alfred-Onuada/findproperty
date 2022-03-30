@@ -7,15 +7,19 @@
 .dashboard-row{
   max-width: 100%;
   display: flex;
+  position: relative;
 }
 .side-navigation{
   height: 100vh;
   background-color: #14505B;
   padding: 50px 0px 20px 0px;
+  position: fixed;
 }
 .section-container{
   height: 100vh;
   padding: 30px 0px 20px 0px;
+  position: absolute;
+  left: 25%;
 }
 .side-navigation-item{
   height: 60px;
@@ -51,7 +55,7 @@
 .applied-section{
   border: 1.5px solid #DFE0EB;
   border-radius: 8px;
-  height: 95vh;
+  height: fit-content;
   padding: 15px 0px 0px 0px;
 }
 .applied-bottom{
@@ -120,4 +124,78 @@
 }
 .table-divider{
  background: #DFE0EB;
+}
+.applied-content{
+  width: 100%;
+}
+.applied-header, .row-contents{
+  display: flex;
+  padding: 0px 30px;
+}
+.row-contents{
+  place-items: center;
+  height: 80px;
+}
+.col-35-percent{
+  width: 35%;
+}
+.col-15-percent{
+  width: 15%;
+}
+.col-5-percent{
+  width: 5%;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  font-size: 16px;
+}
+.property-img-and-details{
+  display: flex;
+}
+.table-heading{
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  margin: 0px;
+  font-size: 14px;
+  color: #9FA2B4;
+  margin-bottom: 10px;
+}
+.delete-record-button{
+  background-color: red;
+  border-radius: 20px;
+  padding: 0px 25px;
+  color: #FFFF;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 27px;
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+}
+.more-vertical-icon{
+  color: #9FA2B4;
+  cursor: pointer;
+}
+.price-inner-div{
+  display: flex;
+  place-items: flex-start;
+}
+.price-colored{
+  color: #2d9db2;
+  font-weight: 600;
+}
+.table-data-text{
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  margin: 0px;
+}
+.table-data-sub-text{
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #9FA2B4;
+  margin: 0px;
+}
+.property-table-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
 }

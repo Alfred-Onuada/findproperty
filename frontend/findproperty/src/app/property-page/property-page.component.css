@@ -28,6 +28,13 @@
   place-items: center;
   height: 30px;
 }
+.price-btn{
+  background-color: #FA983A;
+  border-radius: 0px;
+  margin-right: 25px;
+  color: #FFFF;
+  padding: 0px 25px;
+}
 .vertical-line{
   height: 30px;
   display: inline;

@@ -22,6 +22,7 @@
         {{propertyInfo.description}}
       </p>
       <div class="property-specific-detail">
+        <button mat-flat-button class="price-btn">For {{propertyInfo.listingType}} ₦{{propertyInfo.price | number}}</button>
         <div class="detail-address">
           <fa-icon class="golden-icon" [icon]="locationIcon"></fa-icon> {{propertyInfo.location}}
         </div>
