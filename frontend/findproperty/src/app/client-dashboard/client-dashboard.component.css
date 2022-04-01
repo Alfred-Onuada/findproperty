@@ -14,12 +14,14 @@
   background-color: #14505B;
   padding: 50px 0px 20px 0px;
   position: fixed;
+  width: 20%;
 }
 .section-container{
   height: 100vh;
   padding: 30px 0px 20px 0px;
   position: absolute;
-  left: 25%;
+  left: 20%;
+  width: 80%
 }
 .side-navigation-item{
   height: 60px;
@@ -50,7 +52,7 @@
 .specific-dashboard-section{
   width: 100%;
   height: 100%;
-  padding: 0px 0px 0px 10px;
+  padding: 0px 10px;
 }
 .applied-section{
   border: 1.5px solid #DFE0EB;
@@ -136,14 +138,14 @@
   place-items: center;
   height: 80px;
 }
-.col-35-percent{
-  width: 35%;
+.col-40-percent{
+  width: 40%;
 }
-.col-15-percent{
-  width: 15%;
+.col-14-percent{
+  width: 14%;
 }
-.col-5-percent{
-  width: 5%;
+.col-4-percent{
+  width: 4%;
   display: flex;
   place-content: center;
   place-items: center;
