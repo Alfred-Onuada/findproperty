@@ -9,14 +9,14 @@ import { IProperties } from "../interfaces/properties";
 })
 export class PropertyService{
 
-  baseApiUrl: string = 'assets/fake-data/properties.json';
+  private baseApiUrl: string = 'assets/fake-data/properties.json';
 
   constructor(private http: HttpClient) { }
 
   getProperties(count: number, offset: number = 0): Observable<IProperties[]> {
     return this.http.get<IProperties[]>(this.baseApiUrl)
       .pipe(
-        map((properties) => properties.slice(offset, offset + count)),
+        map((properties: IProperties[]) => properties.slice(offset, offset + count)),
         catchError(this.handleError)
       )
   }
@@ -24,8 +24,8 @@ export class PropertyService{
   getPropertiesBySellerId(id: string, currentPropertyId: string, count: number, offset: number = 0): Observable<IProperties[]> {
     return this.http.get<IProperties[]>(this.baseApiUrl)
       .pipe(
-        map((properties) => properties.filter(
-          (property) => (property.sellerId === id && property._id != currentPropertyId)
+        map((properties: IProperties[]) => properties.filter(
+          (property: IProperties) => (property.sellerId === id && property._id != currentPropertyId)
         ).slice(offset, offset + count)),
         catchError(this.handleError)
       )
@@ -34,14 +34,14 @@ export class PropertyService{
   getPropertyById(id: string): Observable<IProperties[]> {
     return this.http.get<IProperties[]>(this.baseApiUrl)
       .pipe(
-        map((properties) => properties.filter(
-          (property) => property._id === id
+        map((properties: IProperties[]) => properties.filter(
+          (property: IProperties) => property._id === id
         )),
         catchError(this.handleError)
       )
   }
 
-  handleError(error: HttpErrorResponse): Observable<never> {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     let errorResponse = { status: 0, message: ''};
 
     if (error.error instanceof ErrorEvent) {

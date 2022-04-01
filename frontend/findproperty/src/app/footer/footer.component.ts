@@ -16,6 +16,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class FooterComponent implements OnInit {
 
+  // hard errors are actual error, like backend or frontend error
+  hardError: Object = {};
+
   // controls display of footer, not all pages need it
   pageNeedsFooter$: Observable<boolean> = of(true);
   pagesWithoutFooter: string[] = [
@@ -92,13 +95,19 @@ export class FooterComponent implements OnInit {
       map(() => this.router.url),
       map(url => this.pagesWithoutFooter.includes(url) == false),
       map(isInPagesWithFooter => isInPagesWithFooter ? true : false)
-    ).subscribe(pageNeedsFooter => this.pageNeedsFooter$ = of(pageNeedsFooter));
+    ).subscribe({
+      next: pageNeedsFooter => this.pageNeedsFooter$ = of(pageNeedsFooter),
+      error: err => this.hardError = err
+    });
 
     // checks if the current route is home page and shows permits the subscribe to email box
     this.router.events.pipe(
       filter((e) => e instanceof NavigationEnd),
       map((e) => (e instanceof NavigationEnd && e.url === '/'))
-    ).subscribe(currentRouteIsHomePage => this.currentRouteIsHomePage$ = of(currentRouteIsHomePage))
+    ).subscribe({
+      next: currentRouteIsHomePage => this.currentRouteIsHomePage$ = of(currentRouteIsHomePage),
+      error: err => this.hardError = err
+    })
 
   }
 

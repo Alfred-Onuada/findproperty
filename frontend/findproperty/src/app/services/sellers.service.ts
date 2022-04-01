@@ -9,21 +9,21 @@ import { IAgent } from "../interfaces/agent";
 })
 export class SellerService{
 
-  baseApiUrl: string = 'assets/fake-data/sellers.json';
+  private baseApiUrl: string = 'assets/fake-data/sellers.json';
 
   constructor(private http: HttpClient) { }
 
   getSellerById(id: string): Observable<IAgent[]> {
     return this.http.get<IAgent[]>(this.baseApiUrl)
       .pipe(
-        map((sellers) => sellers.filter(
-          (seller) => seller._id === id
+        map((sellers: IAgent[]) => sellers.filter(
+          (seller: IAgent) => seller._id === id
         )),
         catchError(this.handleError)
       )
   }
 
-  handleError(error: HttpErrorResponse): Observable<never> {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     let errorResponse = { status: 0, message: ''};
 
     if (error.error instanceof ErrorEvent) {

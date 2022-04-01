@@ -1,9 +1,7 @@
-export interface IAgent{
+export interface IBuyers{
   _id: string,
   image: string;
   name: string,
   email: string,
-  duration: number,
-  rating: number,
   phoneNumber: number
 }
