@@ -1,29 +1,30 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
-import { map, tap } from "rxjs/operators";
-import { IAgent } from "../interfaces/agent";
+import { map } from 'rxjs/operators';
+import { IBuyers } from "../../interfaces/buyers";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SellerService{
+export class BuyerService{
 
-  private baseApiUrl: string = 'assets/fake-data/sellers.json';
+  // this services will get the id it uses from the cookies but for now i'll stick with getting it from the url
+  private baseApiUrl: string = 'assets/fake-data/buyers.json';
 
   constructor(private http: HttpClient) { }
 
-  getSellerById(id: string): Observable<IAgent[]> {
-    return this.http.get<IAgent[]>(this.baseApiUrl)
+  getBuyerById(id: string): Observable<IBuyers[]> {
+    return this.http.get<IBuyers[]>(this.baseApiUrl)
       .pipe(
-        map((sellers: IAgent[]) => sellers.filter(
-          (seller: IAgent) => seller._id === id
+        map((buyers: IBuyers[]) => buyers.filter(
+          (buyer: IBuyers) => buyer._id === id
         )),
         catchError(this.handleError)
       )
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
+  private handleError(error: HttpErrorResponse) {
     let errorResponse = { status: 0, message: ''};
 
     if (error.error instanceof ErrorEvent) {
@@ -37,4 +38,5 @@ export class SellerService{
     console.log(error)
     return throwError(errorResponse);
   }
+
 }

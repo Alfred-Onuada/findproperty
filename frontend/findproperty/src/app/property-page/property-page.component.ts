@@ -5,8 +5,8 @@ import { faAddressBook, faBath, faBed, faEye, faHeart, faRulerHorizontal, faSear
 import { Subscription } from 'rxjs';
 import { IAgent } from '../interfaces/agent';
 import { IProperties } from '../interfaces/properties';
-import { PropertyService } from '../services/properties.service';
-import { SellerService } from '../services/sellers.service';
+import { PropertyService } from '../services/models/properties.service';
+import { SellerService } from '../services/models/sellers.service';
 
 @Component({
   selector: 'fp-property-page',

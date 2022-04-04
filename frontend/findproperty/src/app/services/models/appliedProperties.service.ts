@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import { map } from 'rxjs/operators';
-import { IPropertyTransactions } from "../interfaces/propertyTransactions";
+import { IPropertyTransactions } from "../../interfaces/propertyTransactions";
 
 @Injectable({
   providedIn: 'root'

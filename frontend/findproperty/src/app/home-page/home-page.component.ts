@@ -7,7 +7,7 @@ import { IPartners } from '../interfaces/partners';
 import { IProperties } from '../interfaces/properties';
 import { IReviews } from '../interfaces/reviews';
 import { IStats } from '../interfaces/stats';
-import { PropertyService } from '../services/properties.service';
+import { PropertyService } from '../services/models/properties.service';
 
 @Component({
   selector: 'fp-home-page',
