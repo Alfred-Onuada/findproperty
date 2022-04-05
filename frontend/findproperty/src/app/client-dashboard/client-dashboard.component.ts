@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAngleLeft, faAngleRight, faBookmark, faCog, faCommentDots, faDollarSign, faEllipsisV, faFilter, faHandHoldingUsd, faHeart, faSearch, faSignOutAlt, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
@@ -13,11 +14,15 @@ import { AppliedPorpertiesService } from '../services/models/appliedProperties.s
 import { BuyerService } from '../services/models/buyers.service';
 import { PropertyService } from '../services/models/properties.service';
 import { SellerService } from '../services/models/sellers.service';
+import { CustomPaginator } from './custom-paginator';
 
 @Component({
   selector: 'fp-client-dashboard',
   templateUrl: './client-dashboard.component.html',
-  styleUrls: ['./client-dashboard.component.css']
+  styleUrls: ['./client-dashboard.component.css'],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: CustomPaginator() }
+  ]
 })
 export class ClientDashboardComponent implements OnInit {
 
@@ -49,8 +54,6 @@ export class ClientDashboardComponent implements OnInit {
 
   appliedProperties: IAppliedPropertiesOnDashBoard[] = []
 
-  propertyIndexStart: number = 0;
-  propertyIndexEnd: number = 0;
   propertyCount: number = 0;
   propertyPerPage: number = 10;
 
@@ -58,6 +61,8 @@ export class ClientDashboardComponent implements OnInit {
   buyersSub$!: Subscription;
   appliedPropertiesSub$!: Subscription;
   sellersSub$!: Subscription;
+
+  buyerId: string = '';
 
   constructor(
     private propertiesService: PropertyService,
@@ -69,8 +74,6 @@ export class ClientDashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let buyerId = "";
-
     this.authService.getCurrentLoggedInUser()
       .subscribe({
         next: (userInfo) => {
@@ -82,9 +85,9 @@ export class ClientDashboardComponent implements OnInit {
             }
           }
 
-          buyerId = userInfo.id;
+          this.buyerId = userInfo.id;
           
-          return this.retrieveInformationAboutCurrentUser(buyerId);
+          return this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage);
         },
         error: err => this.hardError = err
       });
@@ -97,18 +100,20 @@ export class ClientDashboardComponent implements OnInit {
 
   }
 
-  retrieveInformationAboutCurrentUser(buyerId: string): void {
+  retrieveInformationAboutCurrentUser(buyerId: string, count: number = this.propertyPerPage, offset: number = 0): void {
     
+    this.appliedProperties = [];
+
     // get the buyer id, get the applied properties and transform into a format useful on the view
     // switchmap activates the next observable when the first is done just like promise.then in regular js
     this.buyersSub$ = this.buyerService.getBuyerById(buyerId).pipe(
       switchMap((buyerDetails: IBuyers[]) => {
 
-        return this.appliedPropertiesService.getRecordsByBuyerId(buyerDetails[0]._id).pipe(
-          switchMap((appliedProperties: IPropertyTransactions[]) => { 
+        return this.appliedPropertiesService.getRecordsByBuyerId(buyerDetails[0]._id, count, offset).pipe(
+          switchMap((appliedProperties: { data: IPropertyTransactions[], _totalLength: number }) => { 
             let records: IAppliedPropertiesOnDashBoard[] = [];
 
-            appliedProperties.forEach(
+            appliedProperties.data.forEach(
               (appliedProperty) => {
 
                 // has to be initialized
@@ -150,7 +155,8 @@ export class ClientDashboardComponent implements OnInit {
                 records.push(data)
               }
             )
-
+            
+            this.propertyCount = appliedProperties._totalLength;
             return records;
           })
         )
@@ -161,9 +167,6 @@ export class ClientDashboardComponent implements OnInit {
         this.appliedProperties.push(appliedPropertiesData);
       },
       error: error => this.hardError = error,
-      complete: () => {
-        this.updatePaginationInfo();
-      }
     })
 
   }
@@ -172,10 +175,20 @@ export class ClientDashboardComponent implements OnInit {
     this.activeSection = sectionName;
   }
 
-  updatePaginationInfo(): void {
-    this.propertyCount = this.appliedProperties.length;
-    this.propertyIndexStart = this.propertyCount > 0 ? 1 : 0;
-    this.propertyIndexEnd = this.propertyCount > this.propertyPerPage ? this.propertyIndexStart + this.propertyPerPage : this.propertyCount;
+  handlePageChange(event: PageEvent): void {
+
+    let nextIndex = event.pageIndex * event.pageSize;
+
+    if (event.pageSize !== this.propertyPerPage) {
+      this.propertyPerPage = event.pageSize;
+      this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, 0)
+
+      return;
+    }
+
+    if (nextIndex < event.length) {
+      this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, nextIndex);
+    }
   }
 
 }

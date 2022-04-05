@@ -34,12 +34,21 @@ export class AppliedPorpertiesService{
       )
   }
 
-  getRecordsByBuyerId(id: string): Observable<IPropertyTransactions[]> {
+  getRecordsByBuyerId(id: string, count: number, offset: number = 0): Observable<{ data: IPropertyTransactions[], _totalLength: number }> {    
     return this.http.get<IPropertyTransactions[]>(this.baseApiUrl)
       .pipe(
-        map((records: IPropertyTransactions[]) => records.filter(
-          (record: IPropertyTransactions) => record.buyerId == id
-        )),
+        map((records: IPropertyTransactions[]) => {
+
+          records = records.filter((record: IPropertyTransactions) => record.buyerId == id)
+
+          // improves performance rather than making many trips to the database
+          let _totalLength: number = records.length;
+          
+          return {
+            _totalLength,
+            data: records.slice(offset, offset + count)
+          }
+        }),
         catchError(this.handleError)
       )
   }

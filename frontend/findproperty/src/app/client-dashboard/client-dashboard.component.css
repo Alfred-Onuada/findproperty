@@ -67,29 +67,13 @@
   height: 60px;
   padding: 0px 30px;
 }
-.properties-per-page{
-  margin: 0px 100px;
-}
-.actions-button-text{
+.actions-button{
+  height: 50px;
+  display: flex;
   margin: 0px;
   font-size: 14px;
   color: #9FA2B4;
   font-family: "Mulish", "Helvetica Neue", sans-serif;
-}
-.page-number-and-property-count{
-  display: flex;
-  place-items: center;
-  justify-content: space-between;
-  width: 150px;
-}
-.page-control{
-  width: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-.page-control-icon{
-  color: #9FA2B4;
-  font-size: 18px;
 }
 .applied-top{
   display: flex;

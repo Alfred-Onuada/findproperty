@@ -114,18 +114,11 @@
             </div>
           </div>
           <div class="applied-bottom">
-            <div class="properties-per-page">
-              <h4 class="actions-button-text">Rows per page:</h4>
-            </div>
-            <div class="page-number-and-property-count">
-              <h4 class="actions-button-text">
-                {{propertyIndexStart}}-{{propertyIndexEnd}} of {{propertyCount}}
-              </h4>
-              <div class="page-control">
-                <fa-icon [icon]="prevPageIcon" class="page-control-icon"></fa-icon>
-                <fa-icon [icon]="nextPageIcon" class="page-control-icon"></fa-icon>
-              </div>
-            </div>
+            <mat-paginator class="actions-button" [length]="propertyCount"
+              [pageSize]="propertyPerPage" (page)="handlePageChange($event)"
+              [pageSizeOptions]="[5, 10, 15, 20]" color="primary"
+              aria-label="Select Page">
+            </mat-paginator>
           </div>
         </div>
       </div>

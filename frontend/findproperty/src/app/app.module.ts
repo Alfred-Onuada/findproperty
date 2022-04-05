@@ -24,6 +24,7 @@ import { StarsComponent } from './stars/stars.component';
 import { BigCarouselComponent } from './big-carousel/big-carousel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
     MatButtonModule,
     StickyNavModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [
     Title
