@@ -55,7 +55,7 @@ export class ClientDashboardComponent implements OnInit {
   appliedProperties: IAppliedPropertiesOnDashBoard[] = []
 
   propertyCount: number = 0;
-  propertyPerPage: number = 10;
+  propertyPerPage: number = 5;
 
   propertiesSub$!: Subscription;
   buyersSub$!: Subscription;
@@ -107,6 +107,7 @@ export class ClientDashboardComponent implements OnInit {
 
   retrieveInformationAboutCurrentUser(buyerId: string, count: number = this.propertyPerPage, offset: number = 0): void {
     
+    this.recordsAreLoading = true;
     this.appliedProperties = [];
 
     // get the buyer id, get the applied properties and transform into a format useful on the view
@@ -185,12 +186,11 @@ export class ClientDashboardComponent implements OnInit {
 
     let nextIndex = event.pageIndex * event.pageSize;
 
-    // breaks the code find out why
-    this.recordsAreLoading = true;
+    console.log(this.propertyPerPage, nextIndex);
 
     if (event.pageSize !== this.propertyPerPage) {
       this.propertyPerPage = event.pageSize;
-      this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, 0)
+      this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, 0);
 
       return;
     }
@@ -198,6 +198,7 @@ export class ClientDashboardComponent implements OnInit {
     if (nextIndex < event.length) {
       this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, nextIndex);
     }
+
   }
 
 }

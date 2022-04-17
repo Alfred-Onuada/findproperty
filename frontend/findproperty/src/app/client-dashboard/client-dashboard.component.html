@@ -44,10 +44,10 @@
       </div>
     </div>
     <div class="section-container">
-      <div class="specific-dashboard-section preloader-container" *ngIf="recordsAreLoading">
+      <div class="specific-dashboard-section preloader-container" [ngClass]="recordsAreLoading ? '' : 'hide-section'">
         <mat-spinner [diameter]="loaderDiameter" [strokeWidth]="loaderWidth"></mat-spinner>
       </div>
-      <div *ngIf="!recordsAreLoading">
+      <div [hidden]="recordsAreLoading ? 'hide-section' : ''">
         <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
         <div class="specific-dashboard-section" *ngIf="activeSection == 'already applied'">
           <div class="applied-section">
