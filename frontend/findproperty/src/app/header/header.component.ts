@@ -1,8 +1,10 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Observable, of, filter, map } from 'rxjs';
 import { CheckAuthService } from '../services/auth/checkAuth.service';
 import { BuyerService } from '../services/models/buyers.service';
 import { SellerService } from '../services/models/sellers.service';
@@ -124,12 +126,16 @@ export class HeaderComponent implements OnInit {
 
   searchIcon: IconProp = faSearch;
   notificationIcon: IconProp = faBell;
+
+  // navigation event preloader
+  navigationIsLoading$: Observable<Boolean> = of(false);
   
   constructor(
     private titleService: Title,
     private authService: CheckAuthService,
     private sellerService: SellerService,
-    private buyerService: BuyerService
+    private buyerService: BuyerService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -141,6 +147,30 @@ export class HeaderComponent implements OnInit {
         },
         error: err => this.hardError = err
       })
+
+    this.router.events.pipe(filter(
+      (e) =>
+        e instanceof NavigationStart ||
+        e instanceof NavigationEnd ||
+        e instanceof NavigationCancel ||
+        e instanceof NavigationError
+      ),
+      map(e => {
+        if (e instanceof NavigationStart) {
+          return true;
+        } else if (e instanceof NavigationEnd) {
+          return false;
+        }
+
+        return false
+      })
+    ).subscribe(
+      // later on you will need to handle route navigation errors so re implement this with a switch statement
+      (state) => { 
+        this.navigationIsLoading$ = of(state)
+        console.log(state)
+      }
+    );
   }
 
   getUserInformation(id: string, role: number): void {

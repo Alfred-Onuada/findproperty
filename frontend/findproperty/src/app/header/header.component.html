@@ -60,5 +60,8 @@
     </div>
   </div>
   <!-- provides a division for the header -->
-  <hr class="blue-header-seperator">
+  <hr class="blue-header-seperator" *ngIf="!(navigationIsLoading$ | async)">
+
+  <!-- preloader during navigation, make nav errors pop up in the view without destroying all the elements -->
+  <mat-progress-bar mode="indeterminate" *ngIf="navigationIsLoading$ | async"></mat-progress-bar>
 </header>
