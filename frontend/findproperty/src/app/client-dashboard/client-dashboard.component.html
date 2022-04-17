@@ -44,90 +44,95 @@
       </div>
     </div>
     <div class="section-container">
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == 'already applied'">
-        <div class="applied-section">
-          <div class="applied-top">
-            <h4 class="all-tickets-text">All Tickets</h4>
-            <div class="sort-and-filter">
-              <div class="sort-or-filter-container">
-                <fa-icon [icon]="sortIcon" class="top-icon"></fa-icon>
-                <h4 class="actions-button-text-top">Sort</h4>
-              </div>
-              <div class="sort-or-filter-container">
-                <fa-icon [icon]="filterIcon" class="top-icon"></fa-icon>
-                <h4 class="actions-button-text-top">Filter</h4>
+      <div class="specific-dashboard-section preloader-container" *ngIf="recordsAreLoading">
+        <mat-spinner [diameter]="loaderDiameter" [strokeWidth]="loaderWidth"></mat-spinner>
+      </div>
+      <div *ngIf="!recordsAreLoading">
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == 'already applied'">
+          <div class="applied-section">
+            <div class="applied-top">
+              <h4 class="all-tickets-text">All Tickets</h4>
+              <div class="sort-and-filter">
+                <div class="sort-or-filter-container">
+                  <fa-icon [icon]="sortIcon" class="top-icon"></fa-icon>
+                  <h4 class="actions-button-text-top">Sort</h4>
+                </div>
+                <div class="sort-or-filter-container">
+                  <fa-icon [icon]="filterIcon" class="top-icon"></fa-icon>
+                  <h4 class="actions-button-text-top">Filter</h4>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="applied-content">
-            <div class="applied-header">
-              <div class="col-40-percent">
-                <h4 class="table-heading">Property</h4>
-              </div>
-              <div class="col-14-percent">
-                <h4 class="table-heading">Price</h4>
-              </div>
-              <div class="col-14-percent">
-                <h4 class="table-heading">Agent Name</h4>
-              </div>
-              <div class="col-14-percent">
-                <h4 class="table-heading">Active Since</h4>
-              </div>
-              <div class="col-14-percent">
-                <h4 class="table-heading">Delete</h4>
-              </div>
-              <div class="col-4-percent"></div>
-            </div>
-            <mat-divider class="table-divider"></mat-divider>
-            <div class="mock-table-row" *ngFor="let property of appliedProperties">
-              <div class="row-contents">
-                <div class="col-40-percent property-img-and-details">
-                  <img src="{{property.image}}" class="property-table-img">
-                  <div>
-                    <h4 class="table-data-text">{{property.name}}</h4>
-                    <h4 class="table-data-sub-text">{{property.lastUpdate}}</h4>
-                  </div>
+            <div class="applied-content">
+              <div class="applied-header">
+                <div class="col-40-percent">
+                  <h4 class="table-heading">Property</h4>
                 </div>
                 <div class="col-14-percent">
-                  <div class="price-inner-div">
-                    <h4 class="table-data-text price-colored">₦{{property.price | number}}</h4>
-                  </div>
+                  <h4 class="table-heading">Price</h4>
                 </div>
                 <div class="col-14-percent">
-                  <div>
-                    <h4 class="table-data-text">{{property.agentName}}</h4>
-                    <h4 class="table-data-sub-text">{{property.propertyUploadtime | date}}</h4>
-                  </div>
+                  <h4 class="table-heading">Agent Name</h4>
                 </div>
                 <div class="col-14-percent">
-                  <h4 class="table-data-text">{{property.activeSince | date}}</h4>
+                  <h4 class="table-heading">Active Since</h4>
                 </div>
                 <div class="col-14-percent">
-                  <button mat-button class="delete-record-button">Delete</button>
+                  <h4 class="table-heading">Delete</h4>
                 </div>
-                <div class="col-4-percent">
-                  <fa-icon [icon]="moreVerticalIcon" class="more-vertical-icon"></fa-icon>
-                </div>
+                <div class="col-4-percent"></div>
               </div>
               <mat-divider class="table-divider"></mat-divider>
+              <div class="mock-table-row" *ngFor="let property of appliedProperties">
+                <div class="row-contents">
+                  <div class="col-40-percent property-img-and-details">
+                    <img src="{{property.image}}" class="property-table-img">
+                    <div>
+                      <h4 class="table-data-text">{{property.name}}</h4>
+                      <h4 class="table-data-sub-text">{{property.lastUpdate}}</h4>
+                    </div>
+                  </div>
+                  <div class="col-14-percent">
+                    <div class="price-inner-div">
+                      <h4 class="table-data-text price-colored">₦{{property.price | number}}</h4>
+                    </div>
+                  </div>
+                  <div class="col-14-percent">
+                    <div>
+                      <h4 class="table-data-text">{{property.agentName}}</h4>
+                      <h4 class="table-data-sub-text">{{property.propertyUploadtime | date}}</h4>
+                    </div>
+                  </div>
+                  <div class="col-14-percent">
+                    <h4 class="table-data-text">{{property.activeSince | date}}</h4>
+                  </div>
+                  <div class="col-14-percent">
+                    <button mat-button class="delete-record-button">Delete</button>
+                  </div>
+                  <div class="col-4-percent">
+                    <fa-icon [icon]="moreVerticalIcon" class="more-vertical-icon"></fa-icon>
+                  </div>
+                </div>
+                <mat-divider class="table-divider"></mat-divider>
+              </div>
+            </div>
+            <div class="applied-bottom">
+              <mat-paginator class="actions-button" [length]="propertyCount"
+                [pageSize]="propertyPerPage" (page)="handlePageChange($event)"
+                [pageSizeOptions]="[5, 10, 15, 20]" color="primary"
+                aria-label="Select Page">
+              </mat-paginator>
             </div>
           </div>
-          <div class="applied-bottom">
-            <mat-paginator class="actions-button" [length]="propertyCount"
-              [pageSize]="propertyPerPage" (page)="handlePageChange($event)"
-              [pageSizeOptions]="[5, 10, 15, 20]" color="primary"
-              aria-label="Select Page">
-            </mat-paginator>
-          </div>
         </div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
+        <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
       </div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
-      <div class="specific-dashboard-section" *ngIf="activeSection == ''"></div>
     </div>
   </div>
 </div>

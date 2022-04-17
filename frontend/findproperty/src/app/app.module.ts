@@ -25,6 +25,7 @@ import { BigCarouselComponent } from './big-carousel/big-carousel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     StickyNavModule,
     MatDividerModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     Title

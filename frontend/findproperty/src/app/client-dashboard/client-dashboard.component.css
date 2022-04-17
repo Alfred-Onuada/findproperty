@@ -54,6 +54,11 @@
   height: 100%;
   padding: 0px 10px;
 }
+.preloader-container{
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
 .applied-section{
   border: 1.5px solid #DFE0EB;
   border-radius: 8px;

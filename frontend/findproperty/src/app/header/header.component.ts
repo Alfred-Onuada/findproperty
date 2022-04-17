@@ -115,7 +115,7 @@ export class HeaderComponent implements OnInit {
 
   // some validation of the jwt from your cookies will help me determine if your logged in
   isLoggedIn: boolean = false;
-  thereIsNotification: boolean = true;
+  thereIsNotification: boolean = false;
 
   // details gotten from the service
   profileDisplayName: string = '';

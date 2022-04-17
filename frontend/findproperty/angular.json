@@ -28,6 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/assets/custom/themes/findProperty.theme.scss",
               "src/styles.css"
             ],
             "scripts": []

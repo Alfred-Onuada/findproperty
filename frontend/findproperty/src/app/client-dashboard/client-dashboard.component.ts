@@ -64,6 +64,11 @@ export class ClientDashboardComponent implements OnInit {
 
   buyerId: string = '';
 
+  // controls preloader
+  recordsAreLoading: boolean = true;
+  loaderDiameter: number = 70;
+  loaderWidth: number = 3;
+
   constructor(
     private propertiesService: PropertyService,
     private buyerService: BuyerService,
@@ -167,6 +172,7 @@ export class ClientDashboardComponent implements OnInit {
         this.appliedProperties.push(appliedPropertiesData);
       },
       error: error => this.hardError = error,
+      complete: () => this.recordsAreLoading = false
     })
 
   }
@@ -178,6 +184,9 @@ export class ClientDashboardComponent implements OnInit {
   handlePageChange(event: PageEvent): void {
 
     let nextIndex = event.pageIndex * event.pageSize;
+
+    // breaks the code find out why
+    this.recordsAreLoading = true;
 
     if (event.pageSize !== this.propertyPerPage) {
       this.propertyPerPage = event.pageSize;
