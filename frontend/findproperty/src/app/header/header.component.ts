@@ -163,12 +163,11 @@ export class HeaderComponent implements OnInit {
         }
 
         return false
-      })
+      }),
     ).subscribe(
       // later on you will need to handle route navigation errors so re implement this with a switch statement
       (state) => { 
         this.navigationIsLoading$ = of(state)
-        console.log(state)
       }
     );
   }
