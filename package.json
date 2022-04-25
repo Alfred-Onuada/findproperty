@@ -9,7 +9,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend && npm start",
+    "start": "cd backend && npm install && npm start",
     "heroku-postbuild": "cd frontend/findproperty && npm install && npm run build"
   },
   "repository": {
