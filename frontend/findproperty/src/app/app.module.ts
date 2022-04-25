@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer.component';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { StickyNavModule } from 'ng2-sticky-nav';
 import { formatNumber } from './pipes/numberFormatter.pipe';
 import { PropertyCardComponent } from './property-card/property-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -54,7 +53,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatGridListModule,
     MatListModule,
     MatButtonModule,
-    StickyNavModule,
     MatDividerModule,
     HttpClientModule,
     MatPaginatorModule,
