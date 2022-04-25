@@ -1,10 +1,6 @@
 {
   "name": "findproperty",
   "version": "0.0.0",
-  "engines": {
-    "node": "16.13.0",
-    "npm": "8.7.0"
-  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
@@ -36,10 +32,10 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
     "typescript": "~4.5.2",
-    "@angular/cli": "^13.3.3"
+    "@angular/cli": "^13.3.3",
+    "@angular-devkit/build-angular": "~13.3.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.3.3",
     "@angular/compiler-cli": "~13.3.4",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
