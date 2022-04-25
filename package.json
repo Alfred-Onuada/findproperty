@@ -1,0 +1,26 @@
+{
+  "name": "findproperty",
+  "version": "1.0.0",
+  "description": "a cool app for selling, buying properties",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && npm start",
+    "heroku-postbuild": "cd ../frontend/findproperty && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alfred-Onuada/findproperty.git"
+  },
+  "keywords": [
+    "house",
+    "real",
+    "estate"
+  ],
+  "author": "Onuada Alfred, Onuada Emmanuel, Olajide Jolomi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alfred-Onuada/findproperty/issues"
+  },
+  "homepage": "https://github.com/Alfred-Onuada/findproperty#readme"
+}
