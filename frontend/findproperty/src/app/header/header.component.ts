@@ -143,7 +143,7 @@ export class HeaderComponent implements OnInit {
     this.authService.getCurrentLoggedInUser()
       .subscribe({
         next: userInfo => {
-          this.getUserInformation(userInfo.id, userInfo.role);
+          // this.getUserInformation(userInfo.id, userInfo.role);
         },
         error: err => this.hardError = err
       })
