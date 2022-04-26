@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import { map } from 'rxjs/operators';
 import { IPropertyTransactions } from "../../interfaces/propertyTransactions";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { IPropertyTransactions } from "../../interfaces/propertyTransactions";
 export class AppliedPorpertiesService{
 
   // this services will get the id it uses from the cookies but for now i'll stick with getting it from the url
-  private baseApiUrl: string = 'assets/fake-data/appliedProperties.json';
+  private baseApiUrl: string = environment.apiUrl + 'fake-data/appliedProperties.json';
 
   constructor(private http: HttpClient) { }
 

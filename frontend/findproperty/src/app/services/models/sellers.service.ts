@@ -3,13 +3,14 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { IAgent } from "../../interfaces/agent";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SellerService{
 
-  private baseApiUrl: string = 'assets/fake-data/sellers.json';
+  private baseApiUrl: string = environment.apiUrl + 'fake-data/sellers.json';
 
   constructor(private http: HttpClient) { }
 

@@ -1,14 +1,26 @@
 const express =  require('express');
 const path = require('path');
+const cors = require('cors');
 
 // setup dot env
 require('dotenv').config();
 
 const app = express();
 
+// may not need cors in production since the app will be served from the same domain
+app.use(cors());
 app.use(express.static(path.join(__dirname, "../frontend", "findproperty", "dist", "findproperty")));
 
+
+// all of this will be scraped once db is up
 app.get("*", (req, res) => {
+
+  const lookingFor = req.url.split('/').pop();
+
+  if (lookingFor && lookingFor.split('.')[1] == 'json') {
+    return res.sendFile(path.join(__dirname, "/fake-data", lookingFor));  
+  }
+
   res.sendFile(path.join(__dirname, "../frontend", "findproperty", "dist", "findproperty", "index.html"));
 });
 

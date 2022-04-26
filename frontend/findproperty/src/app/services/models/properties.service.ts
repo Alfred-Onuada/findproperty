@@ -3,13 +3,14 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import { map } from "rxjs/operators";
 import { IProperties } from "../../interfaces/properties";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService{
 
-  private baseApiUrl: string = 'assets/fake-data/properties.json';
+  private baseApiUrl: string = environment.apiUrl + 'fake-data/properties.json';
 
   constructor(private http: HttpClient) { }
 
