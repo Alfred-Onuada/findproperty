@@ -29,7 +29,7 @@
       <h4 class="oauth-title">or continue with</h4>
       <mat-grid-list class="oauth-client-grid" rowHeight="fit" cols="3">
         <mat-grid-tile *ngFor="let client of oAuth">
-          <img class="oauth-icon" [src]="client.icon" (click)="client.func()">
+          <img loading="lazy" class="oauth-icon" [src]="client.icon" (click)="client.func()">
         </mat-grid-tile>
       </mat-grid-list>
     </div>

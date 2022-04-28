@@ -87,7 +87,7 @@
               <div class="mock-table-row" *ngFor="let property of appliedProperties">
                 <div class="row-contents">
                   <div class="col-40-percent property-img-and-details">
-                    <img src="{{property.image}}" class="property-table-img">
+                    <img loading="lazy" src="{{property.image}}" class="property-table-img">
                     <div>
                       <h4 class="table-data-text">{{property.name}}</h4>
                       <h4 class="table-data-sub-text">{{property.lastUpdate}}</h4>

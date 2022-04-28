@@ -19,7 +19,7 @@
           <div class="fake-sky"></div>
         </div>
         <div class="top-section-image">
-          <img [src]="topImage" alt="Image of high rise building">
+          <img loading="lazy" [src]="topImage" alt="Image of high rise building">
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="row bio-row">
       <div class="col-md-6 col-sm-12">
         <div class="moving-family-div">
-          <img [src]="movingFamilyImage" alt="Image of a family" class="moving-img">
+          <img loading="lazy" [src]="movingFamilyImage" alt="Image of a family" class="moving-img">
           <div class="moving-family-image-border">
             <div class="years-of-experience">
               <h1 class="years">7+</h1>
@@ -131,7 +131,7 @@
     <mat-grid-list class="partners-image" rowHeight="fit" [cols]="breakpoint"
       (window:resize)="onResize($event)" gutterSize="10px">
       <mat-grid-tile *ngFor="let partner of partners">
-        <img class="partner-image-tile" [src]="partner.image" [alt]="partner.name" [title]="partner.name">
+        <img loading="lazy" class="partner-image-tile" [src]="partner.image" [alt]="partner.name" [title]="partner.name">
       </mat-grid-tile>
     </mat-grid-list>
   </div>

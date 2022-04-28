@@ -4,7 +4,7 @@
       <div class="left-arrow" (click)="moveLeft()">
         <fa-icon [icon]="leftArrow" class="left-arrow-icon"></fa-icon>
       </div>
-      <img class="carousel-image" [src]="current.image" [alt]="current.title">
+      <img loading="lazy" class="carousel-image" [src]="current.image" [alt]="current.title">
       <div class="right-arrow" (click)="moveRight()">
         <fa-icon [icon]="rightArrow" class="right-arrow-icon"></fa-icon>
       </div>

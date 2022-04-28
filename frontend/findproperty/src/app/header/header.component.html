@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row navbar-row">
       <div routerLink="/" (click)="setTitle('Find-Property | Don\'t buy a house, buy a home')" class="logo-container col-md-4">
-        <img class="logo" [src]="logoLocation" alt="Company's Logo">
+        <img loading="lazy" class="logo" [src]="logoLocation" alt="Company's Logo">
       </div>
       <div class="nav-bar-toggler" (click)="toggleNav()" 
         *ngIf="isLoggedIn == false">
@@ -55,7 +55,7 @@
         <div class="profile-avatar-and-name">
           <h4 class="profile-name">{{ profileDisplayName }}</h4>
           <div class="profile-img-container">
-            <img [src]="profileImg" [alt]="profileImgAlt" class="profile-img">
+            <img loading="lazy" [src]="profileImg" [alt]="profileImgAlt" class="profile-img">
           </div>
         </div>
       </div>

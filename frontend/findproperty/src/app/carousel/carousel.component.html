@@ -2,7 +2,7 @@
   <div class="carousel-content" *ngIf="i === currentSlide"
     @carouselAnimation>
     <div class="customer-img">
-      <img [src]="slide.image" alt="Image of a customer">
+      <img loading="lazy" [src]="slide.image" alt="Image of a customer">
       <fa-icon class="quotes" [icon]="quotesIcon"></fa-icon>
     </div>
     <div class="customer-review">
