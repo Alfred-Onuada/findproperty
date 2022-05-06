@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
-
 header{
   height: 100px;
   width: 100%;
@@ -31,7 +28,6 @@ header{
   width: fit-content;
   color: #141B2D;
   font-size: 15px;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 .nav-btn-anchor{
   text-decoration: none;
@@ -76,7 +72,6 @@ header{
   display: flex;
 }
 .profile-name{
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.2px;

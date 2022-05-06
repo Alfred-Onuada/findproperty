@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 .top-section-with-filter{
   background-color: #2D9DB2;
   padding: 75px 0px;
@@ -12,7 +9,6 @@
 .intro-header{
   color: #FFFF;
   font-size: 65px;
-  font-family: merriweather, "Helvetica Neue", sans-serif;
   line-height: 75px;
   font-weight: 600;
   font-style: normal;
@@ -21,7 +17,6 @@
   color: #FFFF;
   font-size: 18px;
   line-height: 27px;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 .select-action{
   height: fit-content;
@@ -38,13 +33,11 @@
   background-color: #FFFF;
   border: 1px solid #DDDDDD;
   color: #0B505E;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
 }
 .buy-a-house-btn{
   background-color: #0B505D;
   color: #FFFF;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
 }
 .dotted-div-container{

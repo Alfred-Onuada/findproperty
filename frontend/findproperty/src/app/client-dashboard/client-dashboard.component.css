@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
-
 .client-dashboard-section{
   height: 100%;
   width: 100%;
@@ -42,7 +40,6 @@
   margin-right: 15px;
 }
 .side-nav-text, .side-nav-icon{
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
@@ -81,7 +78,6 @@
   margin: 0px;
   font-size: 14px;
   color: #9FA2B4;
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
 }
 .applied-top{
   display: flex;
@@ -102,7 +98,6 @@
   margin: 0px;
   font-size: 14px;
   color: #4B506D;
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   margin-left: 10px;
 }
 .top-icon{
@@ -112,7 +107,6 @@
 .all-tickets-text{
   margin: 0px;
   font-size: 20px;
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -147,7 +141,6 @@
   display: flex;
 }
 .table-heading{
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   margin: 0px;
   font-size: 14px;
   color: #9FA2B4;
@@ -161,7 +154,6 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 27px;
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
 }
 .more-vertical-icon{
   color: #9FA2B4;
@@ -176,12 +168,10 @@
   font-weight: 600;
 }
 .table-data-text{
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   font-size: 14px;
   margin: 0px;
 }
 .table-data-sub-text{
-  font-family: "Mulish", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 13px;
   color: #9FA2B4;

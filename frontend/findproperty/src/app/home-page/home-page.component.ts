@@ -36,7 +36,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ]
 
   // cols dependent on breakpoint
-  breakpoint:number = window.innerWidth <= 480 ? 2 : 4;
+  breakpoint: number = window.innerWidth <= 480 ? 2 : 4;
 
   // for the icons under the brief bio
   bioStats: IStats[] = [
