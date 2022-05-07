@@ -114,6 +114,7 @@ export class HeaderComponent implements OnInit {
   logoLocation: string = 'assets/img/logo.png';
   navIsOpen: boolean = false;
   isMobile: boolean = window.innerWidth < 825;
+  navBarIsSticky: boolean = false;
 
   // some validation of the jwt from your cookies will help me determine if your logged in
   isLoggedIn: boolean = false;
@@ -170,6 +171,14 @@ export class HeaderComponent implements OnInit {
         this.navigationIsLoading$ = of(state)
       }
     );
+  }
+
+  stickyNavBar(): void {
+    if (window.scrollY > 0) {
+      this.navBarIsSticky = true;
+    } else {
+      this.navBarIsSticky = false;
+    }
   }
 
   getUserInformation(id: string, role: number): void {

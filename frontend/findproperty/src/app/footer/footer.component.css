@@ -62,7 +62,7 @@ footer{
   border: 0px;
   border-radius: 2px;
   padding-left: 20px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .subscribe-button{
   position: absolute;
@@ -83,7 +83,7 @@ footer{
 }
 .footer-headers{
   color: #FFFF;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 25px;
 }
 .footer-text{
@@ -93,7 +93,7 @@ footer{
 }
 .footer-business-hours{
   color: #D5E0EA;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 20px;
   margin-bottom: 7px;
 }

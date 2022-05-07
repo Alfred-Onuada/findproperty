@@ -27,7 +27,7 @@ header{
   padding: 3px 15px;
   width: fit-content;
   color: #141B2D;
-  font-size: 15px;
+  font-size: 16px;
 }
 .nav-btn-anchor{
   text-decoration: none;
@@ -45,6 +45,8 @@ header{
 }
 .sticky-box-shadow{
   box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
 }
 .nav-bar-toggler{
   display: none;

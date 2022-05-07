@@ -1,5 +1,5 @@
 .description-name > h4{
-  font-weight: 500;
+  font-weight: 700;
   font-size: 25px;
 }
 .description-date-and-views{
@@ -117,7 +117,7 @@
   margin: 20px 0px 75px 0px;
 }
 .related-properties-heading{
-  font-weight: 500;
+  font-weight: 700;
   font-size: 18px;
   margin: 0px;
   text-align: center;

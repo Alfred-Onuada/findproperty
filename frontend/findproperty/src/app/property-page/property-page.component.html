@@ -1,6 +1,6 @@
 <!-- the ngIf makes sure this doesn't display if it's empty -->
 <div class="property-description-section" *ngIf="propertyInfo"> 
-  <div class="container">
+  <div class="container-fluid">
     <div class="images-carousel">
       <fp-big-carousel [slides]="propertyInfo.images"></fp-big-carousel>
     </div>
@@ -42,7 +42,7 @@
 
 <!-- the ngIf makes sure this doesn't display if it's empty -->
 <div class="agent-info-section" *ngIf="agentData">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6 agent-bio-and-rating">
         <div class="agent-image">
@@ -67,7 +67,7 @@
 </div>
 
 <div class="related-properties">
-  <div class="container">
+  <div class="container-fluid">
     <div class="featured-properties-card-container">
       <h4 class="related-properties-heading">Related apartments by the same agent</h4>
       <div class="row">

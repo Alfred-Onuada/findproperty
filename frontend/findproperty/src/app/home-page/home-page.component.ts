@@ -26,6 +26,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   title = 'findproperty';
   topImage = 'assets/img/top-image.png';
+  navBarIsSticky: boolean = false;
 
   // for the partners section
   partners: IPartners[] = [
@@ -96,6 +97,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
       },
       error: error => this.hardError = error
     })
+  }
+
+  increasePadding(): void {
+    if (window.scrollY > 0) {
+      this.navBarIsSticky = true;
+    } else {
+      this.navBarIsSticky = false;
+    }
   }
 
   ngOnDestroy(): void {

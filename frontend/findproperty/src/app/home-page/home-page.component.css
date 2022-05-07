@@ -2,6 +2,9 @@
   background-color: #2D9DB2;
   padding: 75px 0px;
 }
+.extra-pad{
+  padding-top: 175px;
+}
 .intro-row{
   display: flex;
   place-items: center;
@@ -10,13 +13,14 @@
   color: #FFFF;
   font-size: 65px;
   line-height: 75px;
-  font-weight: 600;
+  font-weight: 800;
   font-style: normal;
 }
 .intro-text{
   color: #FFFF;
   font-size: 18px;
   line-height: 27px;
+  font-weight: 300;
 }
 .select-action{
   height: fit-content;

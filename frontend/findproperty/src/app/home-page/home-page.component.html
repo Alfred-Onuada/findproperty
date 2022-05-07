@@ -1,5 +1,6 @@
-<div class="top-section-with-filter">
-  <div class="container">
+<div class="top-section-with-filter" (window:scroll)="increasePadding()" 
+  [ngClass]="navBarIsSticky ? 'extra-pad' : ''">
+  <div class="container-fluid">
     <div class="row intro-row">
       <div class="col-lg-5 col-md-6 col-sm-12 top-section-mobile">
         <h4 class="intro-header">Modern living for everyone</h4>
@@ -27,7 +28,7 @@
 </div>
 
 <div class="brief-bio">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row bio-row">
       <div class="col-md-6 col-sm-12">
         <div class="moving-family-div">
@@ -70,7 +71,7 @@
 </div>
 
 <div class="features-section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 feature-container" *ngFor="let feature of features, let i = index">
         <div class="feature-icon-box">
@@ -87,7 +88,7 @@
 </div>
 
 <div class="featured-properties-section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="featured-properties-heading">
       <h2 class="featured-properties-title">Our Featured Property</h2>
       <h4 class="featured-properties-sub-title">
@@ -109,7 +110,7 @@
 </div>
 
 <div class="testimonials-section">
-  <div class="container testimonials-content">
+  <div class="container-fluid testimonials-content">
     <h2 class="testimonials-header">What Our Clients Say</h2>
     <h4 class="testimonials-sub-header">
       There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some
@@ -121,7 +122,7 @@
 </div>
 
 <div class="partners-section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="partner-intro">
       <h2 class="partner-header">Our Trusted Partners</h2>
       <h4 class="partner-text">

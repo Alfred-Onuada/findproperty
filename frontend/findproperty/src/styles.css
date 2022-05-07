@@ -2,5 +2,8 @@
 * {
   font-family: Mulish !important;
 }
+.container-fluid{
+  max-width: 90%;
+}
 html, body { height: 100%; }
 body { margin: 0; box-sizing: border-box; }

@@ -10,7 +10,7 @@
   display: flex;
   place-items: center;
 }
-.sign-up-section > .container{
+.sign-up-section > .container-fluid{
   display: flex;
   place-content: center;
   place-items: center;

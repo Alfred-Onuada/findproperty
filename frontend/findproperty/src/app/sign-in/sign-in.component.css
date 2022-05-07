@@ -4,7 +4,7 @@
   display: flex;
   place-items: center;
 }
-.sign-in-section > .container{
+.sign-in-section > .container-fluid{
   display: flex;
   place-content: center;
   place-items: center;
