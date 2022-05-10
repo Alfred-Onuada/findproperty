@@ -1,3 +1,6 @@
+<!-- creates an empty div to fill up nav space -->
+<div class="extra-pad" [ngClass]="navBarIsSticky ? '' : 'hide'"></div>
+
 <header (window:scroll)="stickyNavBar()" [ngClass]="navBarIsSticky ? 'sticky-box-shadow' : ''">
   <!-- use the sticky-box-shadow class -->
   <!-- may use sticky nav and increase initial bundle budget -->

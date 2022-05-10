@@ -4,6 +4,13 @@ header{
   background-color: #FFFF;
   z-index: 10;
 }
+.extra-pad{
+  width: 100%;
+  height: 100px;
+}
+.hide{
+  display: none;
+}
 .navbar-row{
   height: 100px;
 }

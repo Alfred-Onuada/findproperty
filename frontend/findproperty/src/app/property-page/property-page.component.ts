@@ -31,6 +31,9 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
   // cols dependent on breakpoint
   breakpoint:number = window.innerWidth <= 480 ? 2 : 4;
 
+  // indicates if properties are loading
+  propertiesAreLoading: boolean = false;
+
   // favoriteIcon
   favoriteIcon: IconProp = faHeart;
   isFavorite: boolean = false;
@@ -109,6 +112,8 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
     // clear the previous subscription
     this.relatedPropertiesSub$.unsubscribe();
 
+    this.propertiesAreLoading = true;
+
     this.relatedPropertiesSub$ = this.propertyService.getPropertiesBySellerId(this.sellerId, this.propertyId, 4, this.relatedProperties.length).subscribe({
       next: properties => {
         if (properties.length == 0) {
@@ -116,7 +121,8 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
         }
         return this.relatedProperties.push(...properties);
       },
-      error: error => this.hardError = error
+      error: error => this.hardError = error,
+      complete: () => this.propertiesAreLoading = false
     })
   }
 

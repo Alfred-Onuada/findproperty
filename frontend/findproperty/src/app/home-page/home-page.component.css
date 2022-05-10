@@ -145,6 +145,7 @@
 }
 .brief-bio-text{
   font-size: 18px;
+  line-height: 27px;
   font-weight: normal;
 }
 .bio-stats-container{
@@ -301,13 +302,18 @@
   color: #FFFF;
   font-weight: 500;
   font-size: 15px;
-  border-radius: 0px;
+  border-radius: 2px;
   padding: 5px 15px;
+}
+.spinner-container{
+  display: flex;
+  place-content: center;
+  place-items: center;
 }
 .load-more-container{
   display: flex;
   place-content: center;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 .property-column-left{
   display: flex;
@@ -326,33 +332,14 @@
   .property-column-left, .property-column-right{
     padding: 0px;
   }
-  .top-section-image{
-    height: 430px;
-    width: 380px;
+  .top-section-mobile{
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    text-align: center;
   }
-  .top-section-image > img{
-    right: 20px;
-    top: 10px;
-  }
-  .fake-sky{
-    width: 320px;
-    top: 20px;
-    right: 20px;
-  }
-  .dotted-div:nth-child(1) {
+  .dotted-div-container{
     display: none;
-  }
-  .dotted-div:nth-child(2) {
-    width: 310px;
-    height: 410px;
-    top: 0px;
-    right: 00px;
-  }
-  .dotted-div:nth-child(3) {
-    width: 300px;
-    height: 400px;
-    top: 10px;
-    right: 10px;
   }
   .moving-family-image-border{
     width: 300px;
@@ -365,6 +352,30 @@
   .years-of-experience{
     height: 140px;
     width: 140px;
+  }
+  .brief-bio{
+    margin: 30px 0px;
+  }
+  .moving-family-container{
+    display: grid;
+    justify-content: center;
+    margin-bottom: 45px;
+  }
+  .feature-container{
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    place-content: center;
+  }
+  .mobile-divider{
+    display: block;
+    background-color: #F3F3FA;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+  }
+  .features-section{
+    padding: 80px 0px 40px 0px
   }
 }
 
@@ -383,19 +394,11 @@
     width: 150px;
     height: 120px;
   }
-
   .testimonials-header{
     font-size: 22px;
   }
-
   .testimonials-sub-header{
     font-size: 13px;
-  }
-  .top-section-mobile{
-    display: flex;
-    place-items: center;
-    flex-direction: column;
-    text-align: center;
   }
   .intro-header{
     font-size: 40px;
@@ -411,24 +414,8 @@
   .features-section{
     padding: 80px 0px 50px 0px;
   }
-  .feature-container{
-    position: relative;
-    margin-bottom: 15px;
-    display: flex;
-    place-content: center;
-    place-items: flex-items;
-    padding: 0px 50px;
-  }
   .title-and-description{
     margin-bottom: 10px;
-  }
-  .mobile-divider{
-    display: block;
-    background-color: #F3F3FA;
-    bottom: 0;
-    right: 10%;
-    width: 80%;
-    position: absolute;
   }
   .brief-bio{
     margin: 70px 0px;
@@ -445,10 +432,13 @@
   .moving-family-image-border{
     position: absolute;
     top: 20px;
-    left: 50px;
+    left: 20px;
     border: 9px solid #FA983A;
     height: 350px;
     width: 270px;
+  }
+  .moving-family-container{
+    margin: 0px;
   }
   .years-of-experience{
     position: absolute;
@@ -487,5 +477,23 @@
   .brief-bio-mini-heading{
     font-size: 18px;
     line-height: 22px;
+  }
+  .select-action{
+    width: 100%;
+  }
+  .mobile-divider{
+    display: block;
+    background-color: #F3F3FA;
+    bottom: 0;
+    right: 10%;
+    width: 80%;
+    position: absolute;
+  }
+  .feature-container{
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+    place-content: center;
+    padding: 0px 50px;
   }
 }

@@ -19,6 +19,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   // holds the subscription to get required data
   sub$!: Subscription;
 
+  // indicates if properties are loading
+  propertiesAreLoading: boolean = false;
+
   // hard errors are actual error, like backend or frontend error
   hardError: Object = {};
   // soft errors are actions that will produce no effect like requesting for more properties than you have
@@ -26,7 +29,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   title = 'findproperty';
   topImage = 'assets/img/top-image.png';
-  navBarIsSticky: boolean = false;
 
   // for the partners section
   partners: IPartners[] = [
@@ -99,14 +101,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     })
   }
 
-  increasePadding(): void {
-    if (window.scrollY > 0) {
-      this.navBarIsSticky = true;
-    } else {
-      this.navBarIsSticky = false;
-    }
-  }
-
   ngOnDestroy(): void {
     this.sub$.unsubscribe()
   }
@@ -124,6 +118,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     // clear the previous subscription
     this.sub$.unsubscribe();
 
+    this.propertiesAreLoading = true;
+
     this.sub$ = this.propertyService.getProperties(4, this.featuredProperties.length).subscribe({
       next: properties => {
         if (properties.length == 0) {
@@ -131,7 +127,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
         }
         return this.featuredProperties.push(...properties);
       },
-      error: error => this.hardError = error
+      error: error => this.hardError = error,
+      complete: () => this.propertiesAreLoading = false
     })
   }
 

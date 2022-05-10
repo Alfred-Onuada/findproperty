@@ -1,10 +1,12 @@
 <div class="big-carousel-section">
-  <div class="container-fluid">
+  <div class="carousel-container">
     <div class="arrow-controls-and-image">
       <div class="left-arrow" (click)="moveLeft()">
         <fa-icon [icon]="leftArrow" class="left-arrow-icon"></fa-icon>
       </div>
-      <img loading="lazy" class="carousel-image" [src]="current.image" [alt]="current.title">
+      <img *ngFor="let slide of slides, let i = index"
+        loading="lazy" class="carousel-image" [src]="slide.image" [alt]="slide.title" 
+        [@carouselAnimation]="currentIndex == i ? 'zoomOut' : 'none'">
       <div class="right-arrow" (click)="moveRight()">
         <fa-icon [icon]="rightArrow" class="right-arrow-icon"></fa-icon>
       </div>

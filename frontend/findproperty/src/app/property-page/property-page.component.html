@@ -77,6 +77,9 @@
         </div>
       </div>
     </div>
+    <div class="spinner-container" *ngIf="propertiesAreLoading">
+      <mat-spinner [diameter]="30" [strokeWidth]="3"></mat-spinner>
+    </div>
     <div class="load-more-container">
       <button mat-flat-button class="more-properties-btn" (click)="loadMoreRelatedProperties()">See More Properties</button>
     </div>

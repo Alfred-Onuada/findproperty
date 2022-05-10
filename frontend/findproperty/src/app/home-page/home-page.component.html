@@ -1,5 +1,4 @@
-<div class="top-section-with-filter" (window:scroll)="increasePadding()" 
-  [ngClass]="navBarIsSticky ? 'extra-pad' : ''">
+<div class="top-section-with-filter">
   <div class="container-fluid">
     <div class="row intro-row">
       <div class="col-lg-5 col-md-6 col-sm-12 top-section-mobile">
@@ -30,7 +29,7 @@
 <div class="brief-bio">
   <div class="container-fluid">
     <div class="row bio-row">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 moving-family-container">
         <div class="moving-family-div">
           <img loading="lazy" [src]="movingFamilyImage" alt="Image of a family" class="moving-img">
           <div class="moving-family-image-border">
@@ -102,6 +101,9 @@
           <fp-property-card [propertyInfo]="property"></fp-property-card>
         </div>
       </div>
+    </div>
+    <div class="spinner-container" *ngIf="propertiesAreLoading">
+      <mat-spinner [diameter]="30" [strokeWidth]="3"></mat-spinner>
     </div>
     <div class="load-more-container">
       <button mat-flat-button class="more-properties-btn" (click)="loadMore()">See More Properties</button>
