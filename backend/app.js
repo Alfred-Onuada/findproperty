@@ -36,3 +36,5 @@ app.listen(port, () => {
 // for auth use session ids lol yes, store the jwt and the needed info in the database, then store the session _id
 // this way you can't modify a jwt you don't know about so when the page loads the frontend gets the information from the jwt and uses it throughout the 
 // session and doesn't store it in any way except a variable in the frontend.
+
+// will need fake geo data as time goes on

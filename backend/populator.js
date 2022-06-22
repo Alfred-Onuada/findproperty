@@ -1,13 +1,24 @@
+// Absolute path to mongo utils - C:\Users\USER\Documents\Tutorials\Mongo DB\mongo-cli\bin
+// setup dot env
+require('dotenv').config();
+
 const faker = require("faker");
 const bcrypt = require('bcrypt');
-const fs = require('fs');
+const { MongoClient } = require("mongodb");
+
+const client = new MongoClient(process.env.DB_URI);
+
+const demo_findpropertyDB = client.db("demo_findproperty");
 
 async function main() {
   try {
+
+    await client.connect();
+
     const dataForAgents = [];
   
     // generates for agents
-    for(let i = 0; i < 50; i++) {
+    for (let i = 0; i < 50; i++) {
       let data = {
         image: `assets/img/agent${Math.floor((Math.random() / 1) * 9)}.png`,
         name: faker.name.findName(),
@@ -17,15 +28,15 @@ async function main() {
         rating: `${Math.floor((Math.random() / 1) * 5)}`
       }
   
-      data['_id'] = await bcrypt.hash(JSON.stringify(data), await bcrypt.genSalt(5));
-
       dataForAgents.push(data);
   
       console.log(`registered ${i}/${50} agents`)
   
     }
   
-    fs.writeFileSync('./sellers.json', JSON.stringify(dataForAgents));
+    let dataForAgentsFromDB = await demo_findpropertyDB.collection("sellers").insertMany(dataForAgents);
+
+    dataForAgentsFromDB = dataForAgentsFromDB.insertedIds;
   
     let dataForProperties = [];
   
@@ -56,8 +67,7 @@ async function main() {
         },
       }
   
-      data['_id'] = await bcrypt.hash(JSON.stringify(data), await bcrypt.genSalt(5));
-      data['sellerId'] = dataForAgents[Math.floor(i / 10)]._id;
+      data['sellerId'] = dataForAgentsFromDB[Math.floor(i / 10).toString()];
 
       dataForProperties.push(data);
   
@@ -67,7 +77,9 @@ async function main() {
     // creates a randomize array just to test real world scenario
     dataForProperties = dataForProperties.sort((a, b) => 0.5 - Math.random());
   
-    fs.writeFileSync('./properties.json', JSON.stringify(dataForProperties));
+    let dataForPropertiesFromDB = await demo_findpropertyDB.collection("properties").insertMany(dataForProperties);
+  
+    dataForPropertiesFromDB = dataForPropertiesFromDB.insertedIds;
 
     // genereate for buyers
     const dataForBuyers = [];
@@ -80,15 +92,15 @@ async function main() {
         phoneNumber: faker.phone.phoneNumber(),
       }
 
-      data['_id'] = await bcrypt.hash(JSON.stringify(data), await bcrypt.genSalt(5));
-
       dataForBuyers.push(data);
 
       console.log(`registered ${i}/${200} buyers`)
 
     }
 
-    fs.writeFileSync('./buyers.json', JSON.stringify(dataForBuyers));
+    let dataForBuyersFromDB = await demo_findpropertyDB.collection("buyers").insertMany(dataForBuyers);
+
+    dataForBuyersFromDB = dataForBuyersFromDB.insertedIds;
 
     // generate for already applied properties
     const dataForAppliedProperties = [];
@@ -97,13 +109,11 @@ async function main() {
       let propertyRandomNumber = Math.floor(Math.random() * dataForProperties.length);
 
       let data = {
-        propertyId: dataForProperties[propertyRandomNumber]._id,
-        buyerId: dataForBuyers[Math.floor(Math.random() * dataForBuyers.length)]._id,
+        propertyId: dataForPropertiesFromDB[propertyRandomNumber],
+        buyerId: dataForBuyersFromDB[Math.floor(Math.random() * dataForBuyers.length)],
         sellerId: dataForProperties[propertyRandomNumber].sellerId,
         date: faker.date.recent(),
       }
-
-      data['_id'] = await bcrypt.hash(JSON.stringify(data), await bcrypt.genSalt(5));
 
       dataForAppliedProperties.push(data);
 
@@ -111,13 +121,15 @@ async function main() {
 
     }
 
-    fs.writeFileSync('./appliedProperties.json', JSON.stringify(dataForAppliedProperties));
+    await demo_findpropertyDB.collection("appliedProperties").insertMany(dataForAppliedProperties);
 
     console.log("100% Done")
   
   } catch (error) {
     console.log(error);
   }
+
+  client.close();
 }
 
 main();
