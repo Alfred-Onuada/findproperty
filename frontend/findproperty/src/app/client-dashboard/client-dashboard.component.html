@@ -89,7 +89,9 @@
                   <div class="col-40-percent property-img-and-details">
                     <img loading="lazy" src="{{property.image}}" class="property-table-img">
                     <div>
-                      <h4 class="table-data-text">{{property.name}}</h4>
+                      <a class="table-data-text property-link" [routerLink]="['/property', property.propertyId]">
+                        {{property.name}}
+                      </a>
                       <h4 class="table-data-sub-text">{{property.lastUpdate}}</h4>
                     </div>
                   </div>

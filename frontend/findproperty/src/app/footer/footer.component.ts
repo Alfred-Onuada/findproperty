@@ -56,8 +56,9 @@ export class FooterComponent implements OnInit {
   // for links in the footer
   quickAccessLinks: ILinks[] = [
     { name: 'Our Services', target: '/' },
-    { name: 'Privacy Policy', target: '/'},
-    { name: 'Contact Us', target: '/'}
+    { name: 'Privacy Policy', target: '/' },
+    { name: 'Contact Us', target: '/' },
+    { name: 'About Us', target: '/' }
   ];
 
   constructor(

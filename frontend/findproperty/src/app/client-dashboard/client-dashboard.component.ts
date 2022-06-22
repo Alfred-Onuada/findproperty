@@ -127,6 +127,7 @@ export class ClientDashboardComponent implements OnInit {
                   activeSince: new Date("2022-03-31T15:38:17.621Z"),
                   agentName: '',
                   id: '',
+                  propertyId: '',
                   image: '',
                   lastUpdate: '',
                   name: '',
@@ -154,6 +155,7 @@ export class ClientDashboardComponent implements OnInit {
                 // from the applied properties
                 data.id = appliedProperty._id;
                 data.activeSince = new Date(appliedProperty.date);
+                data.propertyId = appliedProperty.propertyId;
 
                 // hardcoding this for now will be gotten from mongodb
                 data.lastUpdate = 'last updated 4 days ago'

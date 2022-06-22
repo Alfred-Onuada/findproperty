@@ -50,7 +50,7 @@
   display: flex;
   place-content: center;
   place-items: center;
-  z-index: 10;
+  z-index: 5;
 }
 .left-arrow{
   left: -75px;

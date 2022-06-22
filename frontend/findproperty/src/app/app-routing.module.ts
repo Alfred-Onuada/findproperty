@@ -8,7 +8,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  { path: "property/:propertyId/:sellerId", component: PropertyPageComponent },
+  { path: "property/:propertyId", component: PropertyPageComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "sign-in", component: SignInComponent },
   { path: "dashboard", component: ClientDashboardComponent }, // in reality some kind of authetication will determine which dashboard to show, but keeping the name same is just for simplicity

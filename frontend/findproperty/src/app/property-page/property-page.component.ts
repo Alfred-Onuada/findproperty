@@ -65,11 +65,10 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.sellerId = params['sellerId'] || '';
       this.propertyId = params['propertyId'] || '';
   
       // this will never be null, because if it is the route will automatically match the 404 page
-      if (this.sellerId == '' || this.propertyId == '') {
+      if (this.propertyId == '') {
         this.hardError = {
           status: 400,
           message: "Looks like the requested property doesn't exist please confirm you have the correct url"
@@ -77,35 +76,58 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
   
         return;
       }
-  
-      this.relatedPropertiesSub$ = this.propertyService.getPropertiesBySellerId(this.sellerId, this.propertyId, 4).subscribe({
-        next: properties => {
-          this.relatedProperties = properties;
-        },
-        error: error => this.hardError = error,
-      })
-  
+
       this.propertyInfoSub$ = this.propertyService.getPropertyById(this.propertyId).subscribe({
         next: properties => {
           this.propertyInfo = properties[0];
-        },
-        error: error => this.hardError = error,
-      })
+
+          console.log(properties);
+
+          // validate and get the seller's id
+          if (typeof this.propertyInfo == "undefined" || typeof this.propertyInfo.sellerId == "undefined") {
+            this.hardError = {
+              status: 400,
+              message: "Looks like the requested property doesn't exist please confirm you have the correct url"
+            }
+
+            return;
+          }
+
+          this.sellerId = this.propertyInfo.sellerId;
   
-      this.agentSub$ = this.sellerService.getSellerById(this.sellerId).subscribe({
-        next: agents => {
-          this.agentData = agents[0];
+          this.relatedPropertiesSub$ = this.propertyService.getPropertiesBySellerId(this.sellerId, this.propertyId, 4).subscribe({
+            next: properties => {
+              this.relatedProperties = properties;
+            },
+            error: error => this.hardError = error,
+          })
+      
+          this.agentSub$ = this.sellerService.getSellerById(this.sellerId).subscribe({
+            next: agents => {
+              this.agentData = agents[0];
+            },
+            error: error => this.hardError = error,
+          })
         },
         error: error => this.hardError = error,
       })
+
     })
 
   }
 
   ngOnDestroy(): void {
-    this.relatedPropertiesSub$.unsubscribe();
-    this.propertyInfoSub$.unsubscribe();
-    this.agentSub$.unsubscribe();
+    if (this.relatedPropertiesSub$) {
+      this.relatedPropertiesSub$.unsubscribe();
+    }
+
+    if (this.propertyInfoSub$) {
+      this.propertyInfoSub$.unsubscribe();
+    }
+
+    if (this.agentSub$) {
+      this.agentSub$.unsubscribe();
+    }
   }
 
   loadMoreRelatedProperties() : void {

@@ -1,5 +1,6 @@
 export interface IAppliedPropertiesOnDashBoard{
-  id: String
+  id: String,
+  propertyId: String,
   image: String,
   name: String,
   price: number

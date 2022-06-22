@@ -94,10 +94,12 @@ async function main() {
     const dataForAppliedProperties = [];
 
     for (let i = 0; i < 4000; i++) {
+      let propertyRandomNumber = Math.floor(Math.random() * dataForProperties.length);
+
       let data = {
-        propertyId: dataForProperties[Math.floor(Math.random() * dataForProperties.length)]._id,
+        propertyId: dataForProperties[propertyRandomNumber]._id,
         buyerId: dataForBuyers[Math.floor(Math.random() * dataForBuyers.length)]._id,
-        sellerId: dataForAgents[Math.floor(Math.random() * dataForAgents.length)]._id,
+        sellerId: dataForProperties[propertyRandomNumber].sellerId,
         date: faker.date.recent(),
       }
 

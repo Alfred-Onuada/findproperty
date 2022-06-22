@@ -183,3 +183,10 @@
   border-radius: 50%;
   margin-right: 20px;
 }
+.property-link{
+  text-decoration: none;
+  color: black;
+}
+.property-link:hover{
+  cursor: pointer;
+}
