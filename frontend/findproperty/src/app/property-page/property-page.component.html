@@ -11,10 +11,10 @@
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 description-date-and-views">
           <div class="description-date">
-            <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date | date}}
+            <!-- <fa-icon class="blue-icons" [icon]="contactIcon"></fa-icon> {{propertyInfo.date | date}} -->
           </div>
           <div class="description-views">
-            <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views}} views
+            <!-- <fa-icon class="blue-icons" [icon]="viewsIcon"></fa-icon> {{propertyInfo.views}} views -->
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="agent-bio">
           <h4 class="agent-name">{{agentData.name}}</h4>
-          <h4 class="agent-duration">{{agentData.duration}} years on findproperty.com.ng</h4>
+          <h4 class="agent-duration">{{agentData.duration}} year(s) on findproperty.com.ng</h4>
           <div class="agent-rating">
             <fp-stars [rating]="agentData.rating"></fp-stars>
           </div>

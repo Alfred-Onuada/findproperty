@@ -32,13 +32,14 @@ async function main() {
 
     const port = process.env.PORT || 5000;
 
-    console.log(`Starting App on port - ${port}`);
+    console.log(`Starting Application`);
 
     app.listen(port, () => {
       console.log(`App is live on port ${port}`);
  
       // connect to router
-      app.use("/api/", require("./routes/general.routes"));
+      app.use('/api', require("./routes/general.routes"));
+      app.use('/api/auth', require("./routes/auth.routes"));
 
       // if it misses all the available routes then serve the index page, which will contain a 404 just incase
       app.get("*", (req, res) => {
@@ -48,6 +49,7 @@ async function main() {
   } catch (error) {
     console.log("App couldn't start properly");
     console.error(error);
+    
     throw error;
   }
 

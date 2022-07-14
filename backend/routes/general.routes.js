@@ -1,7 +1,24 @@
 const router = require('express').Router();
-const db = require('./../services/db').getDBInstance();
 
-// this file will contain routing logic to various controllers and utils of the application is it grows to big it will be split up
+// import controllers
+const { 
+  get_properties, get_properties_by_id, get_properties_by_seller_id,
+  get_seller_by_id, get_buyer_by_id
+} = require('./../controllers/general.controller');
 
+// property related routes
+router.get('/properties', get_properties);
+
+router.get('/property', get_properties_by_id);
+
+router.get('/propertiesFromSeller', get_properties_by_seller_id);
+
+
+// agents related routes
+router.get('/seller', get_seller_by_id);
+
+
+// buyers related routes
+router.get('/buyer', get_buyer_by_id);
 
 module.exports = router;

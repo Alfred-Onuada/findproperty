@@ -129,7 +129,7 @@ async function main() {
     console.log(error);
   }
 
-  client.close();
+  await client.close();
 }
 
 main();

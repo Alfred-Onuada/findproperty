@@ -11,16 +11,13 @@ import { environment } from "src/environments/environment";
 export class BuyerService{
 
   // this services will get the id it uses from the cookies but for now i'll stick with getting it from the url
-  private baseApiUrl: string = environment.apiUrl + 'fake-data/buyers.json';
+  private baseApiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
-  getBuyerById(id: string): Observable<IBuyers[]> {
-    return this.http.get<IBuyers[]>(this.baseApiUrl)
+  getBuyerById(id: string): Observable<IBuyers> {
+    return this.http.get<IBuyers>(this.baseApiUrl + `/buyer?id=${id}`)
       .pipe(
-        map((buyers: IBuyers[]) => buyers.filter(
-          (buyer: IBuyers) => buyer._id === id
-        )),
         catchError(this.handleError)
       )
   }

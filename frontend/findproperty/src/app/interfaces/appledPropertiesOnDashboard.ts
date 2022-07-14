@@ -3,9 +3,10 @@ export interface IAppliedPropertiesOnDashBoard{
   propertyId: String,
   image: String,
   name: String,
-  price: number
+  price: number,
   agentName: String
   propertyUploadtime: Date,
   activeSince: Date,
   lastUpdate: String,
+  totalProperties: number
 }

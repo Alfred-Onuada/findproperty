@@ -8,8 +8,6 @@ export interface IProperties{
   images: IHomeCarousel[],
   location: string,
   price: number,
-  date: string,
-  views: number,
   listingType: "Sale" | "Rent",
   highlights: IHighlights,
   sellerId: string

@@ -3,17 +3,9 @@ import { MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAngleLeft, faAngleRight, faBookmark, faCog, faCommentDots, faDollarSign, faEllipsisV, faFilter, faHandHoldingUsd, faHeart, faSearch, faSignOutAlt, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
-import { IAgent } from '../interfaces/agent';
 import { IAppliedPropertiesOnDashBoard } from '../interfaces/appledPropertiesOnDashboard';
-import { IBuyers } from '../interfaces/buyers';
-import { IProperties } from '../interfaces/properties';
-import { IPropertyTransactions } from '../interfaces/propertyTransactions';
 import { CheckAuthService } from '../services/auth/checkAuth.service';
 import { AppliedPorpertiesService } from '../services/models/appliedProperties.service';
-import { BuyerService } from '../services/models/buyers.service';
-import { PropertyService } from '../services/models/properties.service';
-import { SellerService } from '../services/models/sellers.service';
 import { CustomPaginator } from './custom-paginator';
 
 @Component({
@@ -58,7 +50,6 @@ export class ClientDashboardComponent implements OnInit {
   propertyPerPage: number = 5;
 
   propertiesSub$!: Subscription;
-  buyersSub$!: Subscription;
   appliedPropertiesSub$!: Subscription;
   sellersSub$!: Subscription;
 
@@ -70,9 +61,6 @@ export class ClientDashboardComponent implements OnInit {
   loaderWidth: number = 3;
 
   constructor(
-    private propertiesService: PropertyService,
-    private buyerService: BuyerService,
-    private sellerService: SellerService,
     private appliedPropertiesService: AppliedPorpertiesService,
     private authService: CheckAuthService
   ) { }
@@ -93,6 +81,7 @@ export class ClientDashboardComponent implements OnInit {
           this.buyerId = userInfo.id;
           
           return this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage);
+
         },
         error: err => this.hardError = err
       });
@@ -105,74 +94,18 @@ export class ClientDashboardComponent implements OnInit {
 
   }
 
-  retrieveInformationAboutCurrentUser(buyerId: string, count: number = this.propertyPerPage, offset: number = 0): void {
+  retrieveInformationAboutCurrentUser(buyerId: string, count: number, offset: number = 0): void {
     
     this.recordsAreLoading = true;
     this.appliedProperties = [];
 
     // get the buyer id, get the applied properties and transform into a format useful on the view
     // switchmap activates the next observable when the first is done just like promise.then in regular js
-    this.buyersSub$ = this.buyerService.getBuyerById(buyerId).pipe(
-      switchMap((buyerDetails: IBuyers[]) => {
 
-        return this.appliedPropertiesService.getRecordsByBuyerId(buyerDetails[0]._id, count, offset).pipe(
-          switchMap((appliedProperties: { data: IPropertyTransactions[], _totalLength: number }) => { 
-            let records: IAppliedPropertiesOnDashBoard[] = [];
-
-            appliedProperties.data.forEach(
-              (appliedProperty) => {
-
-                // has to be initialized
-                let data: IAppliedPropertiesOnDashBoard = {
-                  activeSince: new Date("2022-03-31T15:38:17.621Z"),
-                  agentName: '',
-                  id: '',
-                  propertyId: '',
-                  image: '',
-                  lastUpdate: '',
-                  name: '',
-                  price: 0,
-                  propertyUploadtime: new Date("2022-03-31T15:38:17.621Z"),
-                };
-                
-                // from the sellers
-                this.sellerService.getSellerById(appliedProperty.sellerId).pipe(
-                  map((seller: IAgent[]) => {
-                    data.agentName = seller[0].name
-                  })
-                ).subscribe()
-
-                // from the properties
-                this.propertiesService.getPropertyById(appliedProperty.propertyId).pipe(
-                  map((property: IProperties[]) => {
-                    data.image = property[0].images[0].image,
-                    data.name = property[0].title,
-                    data.price = property[0].price,
-                    data.propertyUploadtime = new Date(property[0].date)
-                  })
-                ).subscribe()
-
-                // from the applied properties
-                data.id = appliedProperty._id;
-                data.activeSince = new Date(appliedProperty.date);
-                data.propertyId = appliedProperty.propertyId;
-
-                // hardcoding this for now will be gotten from mongodb
-                data.lastUpdate = 'last updated 4 days ago'
-
-                records.push(data)
-              }
-            )
-            
-            this.propertyCount = appliedProperties._totalLength;
-            return records;
-          })
-        )
-
-      })
-    ).subscribe({
+    this.appliedPropertiesSub$ = this.appliedPropertiesService.getRecordsByBuyerId(buyerId, count, offset).subscribe({
       next: appliedPropertiesData => {
-        this.appliedProperties.push(appliedPropertiesData);
+        this.appliedProperties = appliedPropertiesData;
+        this.propertyCount = appliedPropertiesData[0].totalProperties
       },
       error: error => this.hardError = error,
       complete: () => this.recordsAreLoading = false

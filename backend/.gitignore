@@ -3,3 +3,5 @@ node_modules/
 
 # .env will contain very useful information and as such is ignored also
 .env
+
+*.rest

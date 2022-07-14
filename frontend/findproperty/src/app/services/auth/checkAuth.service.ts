@@ -16,7 +16,7 @@ export class CheckAuthService{
     // there may not be a user to return so handle that in the respective component
     
     let userInformation: UserAuthInfo = {
-      id: "$2b$05$v7HO/fUUJHfe6QWDfvhqxOnlJYOZZrkq3IEjYFekshtno.nJzpURe",
+      id: "62b38af26cb80d34086901a5",
       role: 3
     };
     return of(userInformation);

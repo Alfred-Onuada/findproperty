@@ -189,8 +189,8 @@ export class HeaderComponent implements OnInit {
       this.sellerService.getSellerById(id)
         .subscribe({
           next: seller => {
-            this.profileDisplayName = seller[0].name,
-            this.profileImg = seller[0].image,
+            this.profileDisplayName = seller.name,
+            this.profileImg = seller.image,
             this.profileImgAlt = `Image of ` + this.profileDisplayName;
 
             this.isLoggedIn = true;
@@ -201,8 +201,8 @@ export class HeaderComponent implements OnInit {
       this.buyerService.getBuyerById(id)
       .subscribe({
         next: buyer => {
-          this.profileDisplayName = buyer[0].name,
-          this.profileImg = buyer[0].image,
+          this.profileDisplayName = buyer.name,
+          this.profileImg = buyer.image,
           this.profileImgAlt = `Image of ` + this.profileDisplayName;
 
           this.isLoggedIn = true;

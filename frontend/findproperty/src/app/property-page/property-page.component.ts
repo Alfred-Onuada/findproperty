@@ -79,9 +79,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
 
       this.propertyInfoSub$ = this.propertyService.getPropertyById(this.propertyId).subscribe({
         next: properties => {
-          this.propertyInfo = properties[0];
-
-          console.log(properties);
+          this.propertyInfo = properties;
 
           // validate and get the seller's id
           if (typeof this.propertyInfo == "undefined" || typeof this.propertyInfo.sellerId == "undefined") {
@@ -103,8 +101,8 @@ export class PropertyPageComponent implements OnInit, OnDestroy {
           })
       
           this.agentSub$ = this.sellerService.getSellerById(this.sellerId).subscribe({
-            next: agents => {
-              this.agentData = agents[0];
+            next: agent => {
+              this.agentData = agent;
             },
             error: error => this.hardError = error,
           })

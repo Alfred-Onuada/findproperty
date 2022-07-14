@@ -10,34 +10,27 @@ import { environment } from "src/environments/environment";
 })
 export class PropertyService{
 
-  private baseApiUrl: string = environment.apiUrl + 'fake-data/properties.json';
+  private baseApiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getProperties(count: number, offset: number = 0): Observable<IProperties[]> {
-    return this.http.get<IProperties[]>(this.baseApiUrl)
+    return this.http.get<IProperties[]>(this.baseApiUrl + `/properties?required=${count}&skip=${offset}`)
       .pipe(
-        map((properties: IProperties[]) => properties.slice(offset, offset + count)),
         catchError(this.handleError)
       )
   }
 
-  getPropertiesBySellerId(id: string, currentPropertyId: string, count: number, offset: number = 0): Observable<IProperties[]> {
-    return this.http.get<IProperties[]>(this.baseApiUrl)
+  getPropertiesBySellerId(sellerId: string, currentPropertyId: string, count: number, offset: number = 0): Observable<IProperties[]> {
+    return this.http.get<IProperties[]>(this.baseApiUrl + `/propertiesFromSeller?sellerId=${sellerId}&currentPropertyId=${currentPropertyId}&required=${count}&skip=${offset}`)
       .pipe(
-        map((properties: IProperties[]) => properties.filter(
-          (property: IProperties) => (property.sellerId === id && property._id != currentPropertyId)
-        ).slice(offset, offset + count)),
         catchError(this.handleError)
       )
   }
 
-  getPropertyById(id: string): Observable<IProperties[]> {
-    return this.http.get<IProperties[]>(this.baseApiUrl)
+  getPropertyById(id: string): Observable<IProperties> {
+    return this.http.get<IProperties>(this.baseApiUrl + `/property?id=${id}`)
       .pipe(
-        map((properties: IProperties[]) => properties.filter(
-          (property: IProperties) => property._id === id
-        )),
         catchError(this.handleError)
       )
   }

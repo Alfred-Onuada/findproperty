@@ -10,16 +10,13 @@ import { environment } from "src/environments/environment";
 })
 export class SellerService{
 
-  private baseApiUrl: string = environment.apiUrl + 'fake-data/sellers.json';
+  private baseApiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
-  getSellerById(id: string): Observable<IAgent[]> {
-    return this.http.get<IAgent[]>(this.baseApiUrl)
+  getSellerById(id: string): Observable<IAgent> {
+    return this.http.get<IAgent>(this.baseApiUrl + `/seller?id=${id}`)
       .pipe(
-        map((sellers: IAgent[]) => sellers.filter(
-          (seller: IAgent) => seller._id === id
-        )),
         catchError(this.handleError)
       )
   }
