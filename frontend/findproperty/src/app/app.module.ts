@@ -26,6 +26,7 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     HttpClientModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FormsModule
   ],
   providers: [
     Title

@@ -1,4 +1,5 @@
 const { ObjectId } = require('mongodb');
+const { handleServerError } = require('../services/errorHandler');
 
 const db = require('./../services/db').getDBInstance();
 
@@ -120,17 +121,6 @@ async function get_applied_properties(req, res) {
   } finally {
     appliedPropertiesCursor.close()
   }
-}
-
-function handleServerError(error, res) {
-  if (error.name === "BSONTypeError") {
-    return res.status(400).json({
-      status: 400,
-      message: "Bad Request"
-    })
-  }
-
-  return res.status(500).send(error.message);
 }
 
 module.exports = {

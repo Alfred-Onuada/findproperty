@@ -6,9 +6,11 @@
     </h4>
     <div class="sign-in-form">
       <form (submit)="loginFunc()">
-        <input class="signin-form-input" type="text" placeholder="Enter your email" autocomplete="off">
+        <input class="signin-form-input" type="text" placeholder="Enter your email" autocomplete="off"
+          [(ngModel)]="email" name="email">
         <div class="password-container">
-          <input class="signin-form-input" type="password" placeholder="Enter your password" autocomplete="off">
+          <input class="signin-form-input" [type]=paswordFieldType placeholder="Enter your password" autocomplete="off"
+            [(ngModel)]="password" name="password">
           <fa-icon [icon]="showPasswordIcon" class="show-password" 
             (click)="alternateShowPassword()"></fa-icon>
         </div>

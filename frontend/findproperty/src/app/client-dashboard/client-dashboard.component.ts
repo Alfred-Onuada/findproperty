@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAngleLeft, faAngleRight, faBookmark, faCog, faCommentDots, faDollarSign, faEllipsisV, faFilter, faHandHoldingUsd, faHeart, faSearch, faSignOutAlt, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { IAppliedPropertiesOnDashBoard } from '../interfaces/appledPropertiesOnDashboard';
-import { CheckAuthService } from '../services/auth/checkAuth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { AppliedPorpertiesService } from '../services/models/appliedProperties.service';
 import { CustomPaginator } from './custom-paginator';
 
@@ -62,7 +63,8 @@ export class ClientDashboardComponent implements OnInit {
 
   constructor(
     private appliedPropertiesService: AppliedPorpertiesService,
-    private authService: CheckAuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
 
@@ -70,6 +72,10 @@ export class ClientDashboardComponent implements OnInit {
     this.authService.getCurrentLoggedInUser()
       .subscribe({
         next: (userInfo) => {
+          
+          if (userInfo == null) {
+            return this.router.navigate(['/'])
+          }
           
           if (userInfo.role !== this.buyerRole) {
             return this.hardError = {
@@ -134,6 +140,12 @@ export class ClientDashboardComponent implements OnInit {
       this.retrieveInformationAboutCurrentUser(this.buyerId, this.propertyPerPage, nextIndex);
     }
 
+  }
+
+  logout(): void {
+    this.authService.logout();
+
+    window.location.reload();
   }
 
 }

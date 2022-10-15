@@ -37,7 +37,7 @@
         <fa-icon [icon]="settingsIcon" class="side-nav-icon"></fa-icon>
         <div class="side-nav-text">Settings</div>
       </div>
-      <div class="side-navigation-item" [ngClass]="activeSection == 'logout' ? 'active-section' : ''"
+      <div class="side-navigation-item" (click)="logout()"
         (click)="switchSection('logout')">
         <fa-icon [icon]="logoutIcon" class="side-nav-icon"></fa-icon>
         <div class="side-nav-text">Logout</div>

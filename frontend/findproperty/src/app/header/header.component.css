@@ -79,6 +79,7 @@ header{
 }
 .profile-avatar-and-name{
   display: flex;
+  cursor: pointer;
 }
 .profile-name{
   font-weight: 400;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { RoleGuard } from './guards/role-guard.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PropertyPageComponent } from './property-page/property-page.component';
@@ -11,7 +12,10 @@ const routes: Routes = [
   { path: "property/:propertyId", component: PropertyPageComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "sign-in", component: SignInComponent },
-  { path: "dashboard", component: ClientDashboardComponent }, // in reality some kind of authetication will determine which dashboard to show, but keeping the name same is just for simplicity
+  { 
+    path: "c/dashboard", component: ClientDashboardComponent, 
+    canActivate: [RoleGuard], data: { expectedRole: 3 }
+  },
   { path: "", component: HomePageComponent },
   { path: "**", component: PageNotFoundComponent}
 ];

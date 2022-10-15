@@ -50,7 +50,7 @@
           <div class="notification-dot" *ngIf="thereIsNotification"></div>
         </div>
         <mat-divider [vertical]="true" class="profile-divider"></mat-divider>
-        <div class="profile-avatar-and-name">
+        <div class="profile-avatar-and-name" routerLink="/dashboard">
           <h4 class="profile-name">{{ profileDisplayName }}</h4>
           <div class="profile-img-container">
             <img loading="lazy" [src]="profileImg" [alt]="profileImgAlt" class="profile-img">

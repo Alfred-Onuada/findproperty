@@ -5,7 +5,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Observable, of, filter, map } from 'rxjs';
-import { CheckAuthService } from '../services/auth/checkAuth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { BuyerService } from '../services/models/buyers.service';
 import { SellerService } from '../services/models/sellers.service';
 
@@ -133,7 +133,7 @@ export class HeaderComponent implements OnInit {
   
   constructor(
     private titleService: Title,
-    private authService: CheckAuthService,
+    private authService: AuthService,
     private sellerService: SellerService,
     private buyerService: BuyerService,
     private router: Router
@@ -144,6 +144,10 @@ export class HeaderComponent implements OnInit {
     this.authService.getCurrentLoggedInUser()
       .subscribe({
         next: userInfo => {
+          if (userInfo == null) {
+            return;
+          }
+          
           this.getUserInformation(userInfo.id, userInfo.role);
         },
         error: err => this.hardError = err

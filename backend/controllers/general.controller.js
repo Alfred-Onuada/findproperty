@@ -1,4 +1,5 @@
 const { ObjectId } = require('mongodb');
+const { handleServerError } = require('../services/errorHandler');
 
 const db = require('./../services/db').getDBInstance();
 
@@ -17,9 +18,8 @@ async function get_properties(req, res) {
 
   try {
     propertiesCursor = db.collection("properties")
-      .find()
+      .find({}, { views: 0, date: 0, images: { $slice: 1 } })
       // the { $slice: 1 } projects only the first element of the array
-      .project({ views: 0, date: 0, images: { $slice: 1 } })
       .skip(+skip)
       .limit(+required);
 
@@ -78,8 +78,7 @@ async function get_properties_by_seller_id(req, res) {
       .find({ 
         sellerId: ObjectId(sellerId),
         _id: { $ne: ObjectId(currentPropertyId) } 
-      })
-      .project({ views: 0, date: 0, images: { $slice: 1 } })
+      }, { views: 0, date: 0, images: { $slice: 1 } })
       .skip(+skip)
       .limit(+required)
 
@@ -107,8 +106,7 @@ async function get_seller_by_id(req, res) {
   try {
     
     let seller = await db.collection("sellers")
-      .findOne({ _id: ObjectId(id) })
-      .project({ phoneNumber: 0, email: 0 })
+      .findOne({ _id: ObjectId(id) }, { phoneNumber: 0, email: 0 })
 
     if (!seller) {
       return res.status(404).json({
@@ -151,18 +149,6 @@ async function get_buyer_by_id(req, res) {
   } catch (error) {
     handleServerError(error, res);
   }
-}
-
-
-function handleServerError(error, res) {
-  if (error.name === "BSONTypeError") {
-    return res.status(400).json({
-      status: 400,
-      message: "Bad Request"
-    })
-  }
-
-  return res.status(500).send(error.message);
 }
 
 module.exports = {

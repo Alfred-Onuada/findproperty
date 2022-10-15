@@ -1,7 +1,7 @@
 // setup dot env
 require('dotenv').config();
 
-const { MongoClient } = require('mongodb');
+const { MongoClient, MongoDBNamespace } = require('mongodb');
 
 const DB_URI = process.env.DB_URI;
 const primaryDB = process.env.PRIMARY_DB;
@@ -26,7 +26,6 @@ module.exports = {
     })
   },
 
-  // returns the current db instance
   getDBInstance: () => {
     if (_dbInstance == null) {
       throw Error("Cannot return an empty db instance, please connecto to the db first");

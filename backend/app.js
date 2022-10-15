@@ -18,6 +18,7 @@ const app = express();
 // set up middlewares
 app.use(cors());
 app.use(compression());
+app.use(express.json());
 // not used in dev but routes to angular conpiled diles in prod
 app.use(express.static(path.join(__dirname, "../frontend", "findproperty", "dist", "findproperty")));
 
