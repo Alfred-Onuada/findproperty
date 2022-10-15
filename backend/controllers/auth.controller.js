@@ -56,7 +56,7 @@ const login = async function (req, res) {
       }
     }
 
-    return res.status(404).send("The credentials are invalid");
+    return res.status(400).send("The credentials are invalid");
   } catch (error) {
     handleServerError(error, res);
   }
