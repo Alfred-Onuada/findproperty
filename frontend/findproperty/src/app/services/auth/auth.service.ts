@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, map, Observable, of, throwError } from "rxjs";
 import { UserAuthInfo } from "src/app/interfaces/userAuthInfo";
 import { environment } from "src/environments/environment";
+import { switchMap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -44,15 +45,21 @@ export class AuthService{
     localStorage.clear();
   }
 
-  // isAuthorizedUser(expectedRole: number): Observable<boolean> {
-  //   let userInfo: UserAuthInfo | null = this.getCurrentLoggedInUser().pipe(userInfo => userInfo = userInfo)
+  isAuthorizedUser(expectedRole: number): Observable<boolean> {
+    let userInfo: UserAuthInfo | null = null;
 
-  //   if (userInfo == null) {
-  //     return of(false)
-  //   }
+    return this.getCurrentLoggedInUser().pipe(
+      switchMap((res: UserAuthInfo | null) => {
 
-  //   return of(userInfo.role == expectedRole)
-  // }
+        if (res === null) {
+          return of(false)
+        }
+  
+        return of(res.role === expectedRole);
+      })
+    )
+
+  }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorResponse = { status: 0, message: ''};

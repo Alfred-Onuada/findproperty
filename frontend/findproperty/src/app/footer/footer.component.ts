@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   // controls display of footer, not all pages need it
   pageNeedsFooter$: Observable<boolean> = of(true);
   pagesWithoutFooter: string[] = [
-    '/dashboard',
+    '/c/dashboard',
   ]
 
   // go to top icon

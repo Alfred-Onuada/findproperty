@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
   loginFunc(): boolean {
     this.authService.login(this._email, this._password).subscribe({
       next: (sessionId: string) => {
-        window.location.assign('/dashboard');
+        window.location.assign('/c/dashboard');
       },
       error: console.log
     })
