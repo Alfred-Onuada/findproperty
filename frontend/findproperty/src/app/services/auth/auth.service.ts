@@ -46,8 +46,6 @@ export class AuthService{
   }
 
   isAuthorizedUser(expectedRole: number): Observable<boolean> {
-    let userInfo: UserAuthInfo | null = null;
-
     return this.getCurrentLoggedInUser().pipe(
       switchMap((res: UserAuthInfo | null) => {
 
