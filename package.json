@@ -9,7 +9,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd frontend/findproperty && npm install && npm run build && cd ../backend && npm install && npm start"
+    "start": "cd frontend/findproperty && npm install && npm run build && cd ./../backend && npm install && npm start"
   },
   "repository": {
     "type": "git",
