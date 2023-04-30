@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://findpropertyng.herokuapp.com/api',
+  apiUrl: 'https://findproperty.onrender.com/api',
 };
