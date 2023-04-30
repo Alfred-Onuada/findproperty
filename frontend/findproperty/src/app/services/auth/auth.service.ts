@@ -21,14 +21,14 @@ export class AuthService{
       return of(null);
     }
 
-    return this.http.get<UserAuthInfo>(this.baseApiUrl + `/get_user?sessionId=${sessionId}`)
+    return this.http.get<UserAuthInfo>(this.baseApiUrl + `/auth/get_user?sessionId=${sessionId}`)
       .pipe(
         catchError(this.handleError)
       )
   }
 
   login(email: string, password: string): Observable<string> {
-    return this.http.post<string>(this.baseApiUrl + '/login', {
+    return this.http.post<string>(this.baseApiUrl + '/auth/login', {
       email,
       password
     }).pipe(
